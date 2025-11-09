@@ -7,3 +7,11 @@
 .conCls {
   @apply container mx-auto px-[3%] md:px-0;
 }
+
+.category-card:hover .category-arrow {
+  @apply border-[#fb7b53] bg-[#fb7b53];
+}
+
+.category-card:hover .arrow-icon {
+  @apply text-white;
+}
