@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from '../../Components/Banner/Banner';
 import Category from '../../Components/Category/Category';
+import ListingSection from '../../Components/Listing/ListingSection/ListingSection';
 
 const Home = () => {
   return (
@@ -10,6 +11,9 @@ const Home = () => {
       </div>
       <section className="my-20">
         <Category></Category>
+      </section>
+      <section className="my-20">
+        <ListingSection></ListingSection>
       </section>
     </div>
   );
