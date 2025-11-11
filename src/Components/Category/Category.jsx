@@ -54,7 +54,7 @@ const Category = () => {
                   <p className="text-sm text-gray-500">{cat.products}</p>
                 </div>
               </div>
-              <button className="category-arrow p-2 border border-dashed border-[#fb7b53] rounded-full bg-[#fb7a5331]">
+              <button className="category-arrow text-[#fb7b53] transform transition-transform duration-300 w-8 h-8 p-2 rounded-full bg-[#fb7a5331] border border-dashed hover:border-[#fb7b53]">
                 <FaChevronRight className="arrow-icon text-slate-950" />
               </button>
             </div>

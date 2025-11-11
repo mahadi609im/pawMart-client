@@ -1,9 +1,12 @@
 import React from 'react';
 import { FaMapMarkerAlt, FaChevronRight } from 'react-icons/fa';
+import { useNavigate } from 'react-router';
 
 const ListingCard = ({ item }) => {
+  const navigate = useNavigate('');
+
   return (
-    <div className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer hover:bg-[#fb7a5324] border border-dashed hover:border-[#fb7b53]">
+    <div className="details bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-dashed hover:border-[#fb7b53]">
       {/* Image Section */}
       <div className="relative">
         <img
@@ -39,8 +42,13 @@ const ListingCard = ({ item }) => {
             {item.price === 0 ? 'Free Adoption' : `৳${item.price}`}
           </p>
 
-          <button className="inline-flex items-center justify-center gap-2 text-[#fb7b53] font-medium hover:gap-3 transition-all">
-            Details <FaChevronRight className="text-[#fb7b53]" />
+          <button
+            onClick={() => navigate(`/listingsDetails/${item._id}`)}
+            className="details-btn btn relative flex items-center justify-center gap-2 text-[#fb7b53] font-medium border border-dashed border-[#fb7b53] rounded-lg px-5 py-2 overflow-hidden group transition-all duration-300 hover:bg-[#fb7b53]/10 hover:shadow-lg hover:scale-105"
+          >
+            <span className="relative z-10">See Details</span>
+            <FaChevronRight className="text-[#fb7b53] transition-transform duration-300 group-hover:translate-x-2" />
+            <span className="absolute left-0 top-0 w-0 h-full bg-[#fb7b53]/20 transition-all duration-300 group-hover:w-full"></span>
           </button>
         </div>
       </div>

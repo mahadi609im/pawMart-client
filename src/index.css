@@ -11,13 +11,17 @@
 }
 
 .category-card:hover .category-arrow {
-  @apply border-[#fb7b53] bg-[#fb7b53];
+  @apply rotate-300  bg-[#fb7b53] text-white border-2;
+}
+
+.details:hover .details-btn {
+  @apply animate-bounce;
 }
 
 .category-card:hover .arrow-icon {
   @apply text-white;
 }
 
-.titleFont {
+* {
   font-family: 'Josefin Sans', sans-serif;
 }

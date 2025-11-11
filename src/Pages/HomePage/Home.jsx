@@ -1,7 +1,11 @@
 import React from 'react';
 import Banner from '../../Components/Banner/Banner';
 import Category from '../../Components/Category/Category';
-import ListingSection from '../../Components/Listing/ListingSection/ListingSection';
+import QnaSection from '../../Components/QnaSection/QnaSection';
+import HerosSlider from '../../Components/HerosSlider/HerosSlider';
+import herosSectionBg from '../../assets/herosSectionBg.webp';
+import ListingSection from '../Listing/ListingSection/ListingSection';
+import paw2 from '../../assets/paw2.png';
 
 const Home = () => {
   return (
@@ -14,6 +18,34 @@ const Home = () => {
       </section>
       <section className="my-20">
         <ListingSection></ListingSection>
+      </section>
+      <section className="mt-20">
+        <QnaSection></QnaSection>
+      </section>
+      <section className="w-full h-full bg-cover bg-no-repeat bg-center mb-20">
+        <div className="flex flex-col justify-center items-center mb-8 space-y-4 my-10">
+          <div className="flex justify-center items-center">
+            <h3 className="text-lg font-bold text-[#fb7b53] items-center gap-2 relative inline-block">
+              Meet Heroes
+              <img
+                className="w-6 h-6 absolute -top-3 -right-5"
+                src={paw2}
+                alt=""
+              />
+            </h3>
+          </div>
+          <h2 className="titleFont text-slate-950 text-3xl md:text-4xl text-center font-bold">
+            Meet the Stars of Our Pet Family
+          </h2>
+        </div>
+        <div
+          className="w-full h-full bg-cover bg-no-repeat bg-center py-6 mt-12"
+          style={{ backgroundImage: `url(${herosSectionBg})` }}
+        >
+          <div className="w-full md:max-w-1/2 mx-auto">
+            <HerosSlider></HerosSlider>
+          </div>
+        </div>
       </section>
     </div>
   );

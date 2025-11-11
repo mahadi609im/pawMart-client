@@ -1,0 +1,130 @@
+#app {
+  height: 100%;
+}
+
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ✅ Swiper Container Responsive */
+.swiper {
+  width: 100%;
+  height: auto; /* responsive height */
+  min-height: 60vh;
+}
+
+.swiper-slide {
+  font-size: 18px;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ✅ Background Image Responsive */
+.parallax-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 130%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ✅ Typography */
+.swiper-slide .title {
+  font-size: 2.5rem; /* ~40px */
+  font-weight: 600;
+  color: #fbbf24;
+}
+
+.swiper-slide .subtitle {
+  font-size: 1.25rem; /* ~20px */
+  color: #d1d5db;
+  margin-top: 0.5rem;
+}
+
+.swiper-slide .text {
+  font-size: 1rem;
+  max-width: 500px;
+  line-height: 1.6;
+  margin-top: 1rem;
+  color: #9ca3af;
+}
+
+/* -------------------
+   📱 Responsive Design 
+-------------------- */
+@media (max-width: 1024px) {
+  .swiper-slide {
+    padding: 30px 40px;
+  }
+
+  .swiper-slide .title {
+    font-size: 2rem; /* ~32px */
+  }
+
+  .swiper-slide .subtitle {
+    font-size: 1.125rem; /* ~18px */
+  }
+
+  .swiper-slide .text {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .swiper-slide {
+    padding: 20px 25px;
+  }
+
+  .swiper-slide .title {
+    font-size: 1.75rem; /* ~28px */
+  }
+
+  .swiper-slide .subtitle {
+    font-size: 1rem; /* ~16px */
+  }
+
+  .swiper-slide .text {
+    font-size: 0.9rem;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper-slide {
+    padding: 15px;
+  }
+
+  .swiper-slide .title {
+    font-size: 1.5rem; /* ~24px */
+  }
+
+  .swiper-slide .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .swiper-slide .text {
+    font-size: 0.85rem;
+  }
+
+  .parallax-bg {
+    width: 150%;
+  }
+}
