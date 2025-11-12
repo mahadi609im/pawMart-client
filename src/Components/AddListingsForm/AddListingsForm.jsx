@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import listingsFormBg from '../../assets/listingsFormBg.webp';
 import paw from '../../assets/paw.png';
 import paw2 from '../../assets/paw2.png';
@@ -7,14 +7,13 @@ import { toast } from 'react-toastify';
 
 const AddListingsForm = () => {
   const { user } = useContext(AuthContext);
+  const [category, setCategory] = useState('');
 
   const handleAddListings = e => {
     e.preventDefault();
 
-    // সব input value নেওয়া
     const form = e.target;
     const name = form.name.value;
-    const category = form.category.value;
     const price = form.price.value;
     const location = form.location.value;
     const image = form.image.value;
@@ -33,6 +32,8 @@ const AddListingsForm = () => {
       description,
     };
 
+    console.log(newListing);
+
     fetch('http://localhost:3000/listings', {
       method: 'POST',
       headers: {
@@ -44,6 +45,7 @@ const AddListingsForm = () => {
       .then(data => {
         if (data.insertedId) {
           e.target.reset();
+          setCategory(''); // reset category state
           toast.success('New Listings Added Successfully');
         }
       });
@@ -54,6 +56,7 @@ const AddListingsForm = () => {
       className="relative min-h-screen py-20 mt-12"
       style={{ backgroundImage: `url(${listingsFormBg})` }}
     >
+      <title>Add Listings | pawMart</title>;
       <div className="conCls flex flex-col lg:flex-row items-center justify-center">
         {/* Left Side Image */}
         <div className="md:w-1/2 w-full flex justify-center relative">
@@ -85,6 +88,7 @@ const AddListingsForm = () => {
               Add Your Pet or Product
             </h2>
           </div>
+
           <form onSubmit={handleAddListings}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Product / Pet Name */}
@@ -102,11 +106,13 @@ const AddListingsForm = () => {
               <select
                 name="category"
                 required
+                value={category}
+                onChange={e => setCategory(e.target.value)}
                 className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
                 onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
                 onBlur={e => (e.target.style.outline = 'none')}
               >
-                <option disabled selected>
+                <option disabled value="">
                   Category
                 </option>
                 <option>Pets</option>
@@ -119,6 +125,7 @@ const AddListingsForm = () => {
               <input
                 type="number"
                 name="price"
+                required={category !== 'Pets'}
                 placeholder="Price (0 if pet)"
                 className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
                 onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
@@ -183,6 +190,7 @@ const AddListingsForm = () => {
               Add Pet/Product
             </button>
           </form>
+
           {/* Paw Decoration */}
           <img
             src={paw}

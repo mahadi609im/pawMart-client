@@ -13,16 +13,15 @@ const ListingSection = () => {
       .then(res => res.json())
       .then(data => {
         setLatestListings(data);
-        setLoading(false); // 🔹 data আসলে loading বন্ধ
-        console.log(data);
+        setLoading(false);
       })
       .catch(() => setLoading(false)); // error হলেও বন্ধ
   }, []);
 
   return (
-    <section className="py-10">
+    <section className="py-4 md:py-6 lg:py-10">
       <div className="conCls">
-        <div className="flex flex-col justify-center items-center mb-8 space-y-4">
+        <div className="flex flex-col justify-center items-center mb-4 md:mb-8 space-y-4">
           <div className="flex justify-center items-center">
             <h3 className="text-lg font-bold text-[#fb7b53] items-center gap-2 relative inline-block">
               Latest Listings

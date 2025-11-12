@@ -10,6 +10,7 @@ import paw2 from '../../assets/paw2.png';
 const Home = () => {
   return (
     <div>
+      <title>Home | pawMart</title>;
       <div className="mb-20">
         <Banner></Banner>
       </div>

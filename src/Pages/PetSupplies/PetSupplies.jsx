@@ -21,6 +21,7 @@ const PetSupplies = () => {
 
   return (
     <section className="py-10">
+      <title>Pets & Supplies | pawMart</title>;
       <header className="mb-10">
         <SectionBanner></SectionBanner>
       </header>

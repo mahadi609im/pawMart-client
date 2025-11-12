@@ -8,11 +8,16 @@ import RootLayout from '../Layout/RootLayout';
 import PetSupplies from '../Pages/PetSupplies/PetSupplies';
 import MyListing from '../Pages/MyListing/MyListing';
 import MyOrders from '../Pages/MyOrders/MyOrders';
+import ErrorPage from '../Pages/ErrorPage/ErrorPage';
+import PrivateRoutes from '../Components/Private/PrivateRoutes';
+import CategoryFiltered from '../Pages/CategoryFiltered/CategoryFiltered';
+import LoadingSpinner from '../Components/Loading/LoadingSpinner';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout></RootLayout>,
+    hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>,
     children: [
       {
         index: true,
@@ -24,21 +29,37 @@ const router = createBrowserRouter([
       },
       {
         path: '/addListing',
-        Component: AddListingsForm,
+        element: (
+          <PrivateRoutes>
+            <AddListingsForm></AddListingsForm>
+          </PrivateRoutes>
+        ),
       },
       {
         path: '/myListing',
-        element: <MyListing></MyListing>,
+        element: (
+          <PrivateRoutes>
+            <MyListing></MyListing>
+          </PrivateRoutes>
+        ),
       },
       {
         path: '/myOrders',
-        element: <MyOrders></MyOrders>,
+        element: (
+          <PrivateRoutes>
+            <MyOrders></MyOrders>
+          </PrivateRoutes>
+        ),
       },
       {
         path: '/listingsDetails/:id',
         loader: ({ params }) =>
           fetch(`http://localhost:3000/listings/${params.id}`),
-        Component: ListingsDetails,
+        element: (
+          <PrivateRoutes>
+            <ListingsDetails></ListingsDetails>
+          </PrivateRoutes>
+        ),
       },
       {
         path: '/login',
@@ -48,7 +69,15 @@ const router = createBrowserRouter([
         path: '/register',
         Component: Register,
       },
+      {
+        path: '/category-filtered-product/:categoryName',
+        element: <CategoryFiltered></CategoryFiltered>,
+      },
     ],
+  },
+  {
+    path: '/*',
+    element: <ErrorPage></ErrorPage>,
   },
 ]);
 
