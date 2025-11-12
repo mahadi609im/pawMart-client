@@ -27,7 +27,7 @@ const Category = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3000/listings')
+    fetch('https://paw-mart-server-smoky.vercel.app/listings')
       .then(res => res.json())
       .then(data => {
         setListings(data);

@@ -54,7 +54,9 @@ const router = createBrowserRouter([
       {
         path: '/listingsDetails/:id',
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/listings/${params.id}`),
+          fetch(
+            `https://paw-mart-server-smoky.vercel.app/listings/${params.id}`
+          ),
         element: (
           <PrivateRoutes>
             <ListingsDetails></ListingsDetails>

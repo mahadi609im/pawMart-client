@@ -11,7 +11,9 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/myOrders?email=${user.email}`)
+      fetch(
+        `https://paw-mart-server-smoky.vercel.app/myOrders?email=${user.email}`
+      )
         .then(res => res.json())
         .then(data => setMyOrders(data))
         .catch(err => console.error(err));

@@ -1,6 +1,7 @@
 # PawMart
 
-[Live Site](https://pawmart-maha609im.netlify.app)
+[Netlify Live Site](https://pawmart-maha609im.netlify.app)
+[Firebase Live Site](https://powmart-69e38.web.app/)
 
 PawMart is a community-driven platform for pet adoption and pet-related
 products.  

@@ -14,7 +14,9 @@ const MyListing = () => {
   // fetch user listings
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/listings?email=${user.email}`)
+      fetch(
+        `https://paw-mart-server-smoky.vercel.app/listings?email=${user.email}`
+      )
         .then(res => res.json())
         .then(data => setMyListings(data));
     }
@@ -32,7 +34,9 @@ const MyListing = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/listings/${id}`, { method: 'DELETE' })
+        fetch(`https://paw-mart-server-smoky.vercel.app/listings/${id}`, {
+          method: 'DELETE',
+        })
           .then(res => res.json())
           .then(data => {
             if (data.deletedCount) {
@@ -70,11 +74,14 @@ const MyListing = () => {
       email: form.email.value,
     };
 
-    fetch(`http://localhost:3000/listings/${selectedItem._id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(updatedListing),
-    })
+    fetch(
+      `https://paw-mart-server-smoky.vercel.app/listings/${selectedItem._id}`,
+      {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedListing),
+      }
+    )
       .then(res => res.json())
       .then(data => {
         if (data.modifiedCount) {

@@ -39,7 +39,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar conCls py-4">
+    <div className="navbar conCls py-4 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -60,7 +60,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={-1}
-            className="menu menu-sm dropdown-content bg-[#fb7a53a4] rounded-box z-50 mt-3 w-36 p-2 shadow font-medium"
+            className="menu menu-sm dropdown-content bg-[#fb7a53a4] rounded-box mt-3 w-36 p-2 shadow font-medium"
           >
             {links.map((link, idx) => (
               <li key={idx}>
@@ -98,7 +98,7 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 font-medium text-slate-600 space-x-3 z-20">
+        <ul className="menu menu-horizontal px-1 font-medium text-slate-600 space-x-3">
           {links.map((link, idx) => (
             <li key={idx}>
               <NavLink

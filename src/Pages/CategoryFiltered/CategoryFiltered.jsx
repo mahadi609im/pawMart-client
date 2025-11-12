@@ -9,7 +9,7 @@ const CategoryFiltered = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:3000/listings') // server theke all listings
+    fetch('https://paw-mart-server-smoky.vercel.app/listings') // server theke all listings
       .then(res => res.json())
       .then(data => {
         const filtered = data.filter(item => item.category === categoryName);

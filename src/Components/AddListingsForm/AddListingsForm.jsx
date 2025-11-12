@@ -34,7 +34,7 @@ const AddListingsForm = () => {
 
     console.log(newListing);
 
-    fetch('http://localhost:3000/listings', {
+    fetch('https://paw-mart-server-smoky.vercel.app/listings', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

@@ -9,7 +9,7 @@ const ListingSection = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:3000/latest_listings')
+    fetch('https://paw-mart-server-smoky.vercel.app/latest_listings')
       .then(res => res.json())
       .then(data => {
         setLatestListings(data);

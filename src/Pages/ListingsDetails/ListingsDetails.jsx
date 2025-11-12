@@ -33,11 +33,14 @@ const ListingsDetails = () => {
     };
 
     try {
-      const res = await fetch('http://localhost:3000/orders', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(orderData),
-      });
+      const res = await fetch(
+        'https://paw-mart-server-smoky.vercel.app/orders',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(orderData),
+        }
+      );
       const data = await res.json();
       if (data.insertedId || data.acknowledged) {
         toast.success('Order placed successfully!');
