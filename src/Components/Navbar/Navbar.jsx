@@ -3,82 +3,35 @@ import { Link, NavLink } from 'react-router';
 import paw from '../../assets/paw.png';
 import { AuthContext } from '../../context/ContextProvider';
 import { toast } from 'react-toastify';
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
 const Navbar = () => {
   const { user, signOutAuthUser } = useContext(AuthContext);
 
-  const links = (
-    <>
-      <li>
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive
-              ? 'border-b-2 border-dashed border-[#fb7b53] bg-[#fb7a5323] text-slate-950 px-3 py-2 rounded-md font-semibold '
-              : 'hover:border-b-2 border-dashed hover:border-[#fb7b53] hover:bg-[#fb7a5323] hover:text-slate-950 px-3 py-2 rounded-md'
-          }
-        >
-          Home
-        </NavLink>
-      </li>
-
-      <li>
-        <NavLink
-          to="/pets"
-          className={({ isActive }) =>
-            isActive
-              ? 'border-b-2 border-dashed border-[#fb7b53] bg-[#fb7a5323] text-slate-950 px-3 py-2 rounded-md font-semibold'
-              : 'hover:border-b-2 border-dashed hover:border-[#fb7b53] hover:bg-[#fb7a5323] hover:text-slate-950 px-3 py-2 rounded-md'
-          }
-        >
-          Pets & Supplies
-        </NavLink>
-      </li>
-
-      {user && (
-        <>
-          <li>
-            <NavLink
-              to="/addListing"
-              className={({ isActive }) =>
-                isActive
-                  ? 'border-b-2 border-dashed border-[#fb7b53] bg-[#fb7a5323] text-slate-950 px-3 py-2 rounded-md font-semibold'
-                  : 'hover:border-b-2 border-dashed hover:border-[#fb7b53] hover:bg-[#fb7a5323] hover:text-slate-950 px-3 py-2 rounded-md'
-              }
-            >
-              Add Listing
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/myListing"
-              className={({ isActive }) =>
-                isActive
-                  ? 'border-b-2 border-dashed border-[#fb7b53] bg-[#fb7a5323] text-slate-950 px-3 py-2 rounded-md font-semibold'
-                  : 'hover:border-b-2 border-dashed hover:border-[#fb7b53] hover:bg-[#fb7a5323] hover:text-slate-950 px-3 py-2 rounded-md'
-              }
-            >
-              My Listing
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/myOrders"
-              className={({ isActive }) =>
-                isActive
-                  ? 'border-b-2 border-dashed border-[#fb7b53] bg-[#fb7a5323] text-slate-950 px-3 py-2 rounded-md font-semibold'
-                  : 'hover:border-b-2 border-dashed hover:border-[#fb7b53] hover:bg-[#fb7a5323] hover:text-slate-950 px-3 py-2 rounded-md'
-              }
-            >
-              My Orders
-            </NavLink>
-          </li>
-        </>
-      )}
-    </>
-  );
+  const links = [
+    { name: 'Home', path: '/', tooltip: 'Go to Home Page' },
+    {
+      name: 'Pets & Supplies',
+      path: '/pets',
+      tooltip: 'Browse pets and products',
+    },
+    ...(user
+      ? [
+          {
+            name: 'Add Listing',
+            path: '/addListing',
+            tooltip: 'Add a new listing',
+          },
+          {
+            name: 'My Listing',
+            path: '/myListing',
+            tooltip: 'View your listings',
+          },
+          { name: 'My Orders', path: '/myOrders', tooltip: 'View your orders' },
+        ]
+      : []),
+  ];
 
   const handleSignOut = () => {
     signOutAuthUser();
@@ -109,7 +62,30 @@ const Navbar = () => {
             tabIndex={-1}
             className="menu menu-sm dropdown-content bg-[#fb7a53a4] rounded-box z-10 mt-3 w-36 p-2 shadow font-medium"
           >
-            {links}
+            {links.map((link, idx) => (
+              <li key={idx}>
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'border-b-2 border-dashed border-[#fb7b53] bg-[#fb7a5323] text-slate-950 px-3 py-2 rounded-md font-semibold '
+                      : 'hover:border-b-2 border-dashed hover:border-[#fb7b53] hover:bg-[#fb7a5323] hover:text-slate-950 px-3 py-2 rounded-md'
+                  }
+                  data-tooltip-id={`tooltip-${idx}`}
+                  data-tooltip-content={link.tooltip}
+                >
+                  {link.name}
+                </NavLink>
+                <Tooltip
+                  id={`tooltip-${idx}`}
+                  place="right"
+                  effect="solid"
+                  globalEventOff="click"
+                  style={{ zIndex: 9999 }}
+                  anchorSelect={`[data-tooltip-id="tooltip-${idx}"]`}
+                />
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -120,11 +96,33 @@ const Navbar = () => {
           </h2>
         </Link>
       </div>
+
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 font-medium text-slate-600 space-x-3">
-          {links}
+        <ul className="menu menu-horizontal px-1 font-medium text-slate-600 space-x-3 z-20">
+          {links.map((link, idx) => (
+            <li key={idx}>
+              <NavLink
+                to={link.path}
+                className={({ isActive }) =>
+                  isActive
+                    ? 'border-b-2 border-dashed border-[#fb7b53] bg-[#fb7a5323] text-slate-950 px-3 py-2 rounded-md font-semibold'
+                    : 'hover:border-b-2 border-dashed hover:border-[#fb7b53] hover:bg-[#fb7a5323] hover:text-slate-950 px-3 py-2 rounded-md'
+                }
+                data-tooltip-id={`tooltip-center-${idx}`}
+                data-tooltip-content={link.tooltip}
+              >
+                {link.name}
+              </NavLink>
+              <Tooltip
+                id={`tooltip-center-${idx}`}
+                place="bottom"
+                effect="solid"
+              />
+            </li>
+          ))}
         </ul>
       </div>
+
       <div className="navbar-end flex gap-3">
         {user ? (
           <>
@@ -147,21 +145,34 @@ const Navbar = () => {
             <button
               onClick={handleSignOut}
               className="btn bg-[#fb7b53] text-white hover:bg-orange-500 transition-all"
+              data-tooltip-id="tooltip-logout"
+              data-tooltip-content="Logout from your account"
             >
               Logout
             </button>
+            <Tooltip id="tooltip-logout" place="bottom" effect="solid" />
           </>
         ) : (
           <>
             <Link
               to="/login"
               className="btn bg-[#fb7a5331] border border-dashed border-[#fb7b53]"
+              data-tooltip-id="tooltip-login"
+              data-tooltip-content="Login to your account"
             >
               Login
             </Link>
-            <Link to="/register" className="btn bg-[#fb7b53] text-white">
+            <Tooltip id="tooltip-login" place="bottom" effect="solid" />
+
+            <Link
+              to="/register"
+              className="btn bg-[#fb7b53] text-white"
+              data-tooltip-id="tooltip-register"
+              data-tooltip-content="Create a new account"
+            >
               Register
             </Link>
+            <Tooltip id="tooltip-register" place="bottom" effect="solid" />
           </>
         )}
       </div>
