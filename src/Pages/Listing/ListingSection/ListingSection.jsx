@@ -1,17 +1,22 @@
 import { useEffect, useState } from 'react';
 import ListingCard from '../../../Components/ListingCard/ListingCard';
 import paw2 from '../../../assets/paw2.png';
+import LoadingSpinner from '../../../Components/Loading/LoadingSpinner';
 
 const ListingSection = () => {
   const [latestListings, setLatestListings] = useState(null);
+  const [loading, setLoading] = useState(true); // 🔹 loading state যোগ করা হলো
 
   useEffect(() => {
+    setLoading(true);
     fetch('http://localhost:3000/latest_listings')
       .then(res => res.json())
       .then(data => {
         setLatestListings(data);
+        setLoading(false); // 🔹 data আসলে loading বন্ধ
         console.log(data);
-      });
+      })
+      .catch(() => setLoading(false)); // error হলেও বন্ধ
   }, []);
 
   return (
@@ -33,11 +38,16 @@ const ListingSection = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {latestListings?.map(item => (
-            <ListingCard key={item._id} item={item}></ListingCard>
-          ))}
-        </div>
+        {/* 🔹 Loading Spinner */}
+        {loading ? (
+          <LoadingSpinner></LoadingSpinner>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {latestListings?.map(item => (
+              <ListingCard key={item._id} item={item}></ListingCard>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

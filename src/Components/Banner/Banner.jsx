@@ -17,7 +17,7 @@ function Banner() {
   const nextRef = useRef(null);
 
   return (
-    <div className="relative flex flex-col justify-center items-center w-full h-auto">
+    <div className="relative flex flex-col justify-center items-center w-full ">
       <Swiper
         style={{
           '--swiper-navigation-color': '#fb7b53',

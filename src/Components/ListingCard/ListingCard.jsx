@@ -8,11 +8,11 @@ const ListingCard = ({ item }) => {
   return (
     <div className="details bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-dashed hover:border-[#fb7b53]">
       {/* Image Section */}
-      <div className="relative">
+      <div className="relative w-full max-h-64 h-full">
         <img
           src={item.image}
           alt={item.name}
-          className="w-full h-auto object-cover"
+          className="w-full h-full object-cover inset-0"
         />
 
         {/* Category Tag */}
@@ -39,7 +39,11 @@ const ListingCard = ({ item }) => {
         {/* Price and Button */}
         <div className="flex items-center justify-between mt-auto">
           <p className="text-[#fb7b53] font-semibold text-base">
-            {item.price === 0 ? 'Free Adoption' : `৳${item.price}`}
+            {item.price === 0
+              ? 'Free Adoption'
+              : item.price === ''
+              ? 'Free Adoption'
+              : `৳${item.price}`}
           </p>
 
           <button

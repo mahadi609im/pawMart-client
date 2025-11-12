@@ -1,10 +1,54 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import listingsFormBg from '../../assets/listingsFormBg.webp';
 import paw from '../../assets/paw.png';
 import paw2 from '../../assets/paw2.png';
+import { AuthContext } from '../../context/ContextProvider';
+import { toast } from 'react-toastify';
 
 const AddListingsForm = () => {
-  const currentUserEmail = 'maha609im@gmail.com';
+  const { user } = useContext(AuthContext);
+
+  const handleAddListings = e => {
+    e.preventDefault();
+
+    // সব input value নেওয়া
+    const form = e.target;
+    const name = form.name.value;
+    const category = form.category.value;
+    const price = form.price.value;
+    const location = form.location.value;
+    const image = form.image.value;
+    const date = form.date.value;
+    const email = form.email.value;
+    const description = form.description.value;
+
+    const newListing = {
+      name,
+      category,
+      price,
+      location,
+      image,
+      date,
+      email,
+      description,
+    };
+
+    fetch('http://localhost:3000/listings', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(newListing),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          e.target.reset();
+          toast.success('New Listings Added Successfully');
+        }
+      });
+  };
+
   return (
     <div
       className="relative min-h-screen py-20 mt-12"
@@ -41,96 +85,104 @@ const AddListingsForm = () => {
               Add Your Pet or Product
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Product / Pet Name */}
-            <input
-              type="text"
-              name="name"
-              placeholder="Product / Pet Name"
-              className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+          <form onSubmit={handleAddListings}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Product / Pet Name */}
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder="Product / Pet Name"
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
+                onBlur={e => (e.target.style.outline = 'none')}
+              />
+
+              {/* Category */}
+              <select
+                name="category"
+                required
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
+                onBlur={e => (e.target.style.outline = 'none')}
+              >
+                <option disabled selected>
+                  Category
+                </option>
+                <option>Pets</option>
+                <option>Food</option>
+                <option>Accessories</option>
+                <option>Care Products</option>
+              </select>
+
+              {/* Price */}
+              <input
+                type="number"
+                name="price"
+                placeholder="Price (0 if pet)"
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
+                onBlur={e => (e.target.style.outline = 'none')}
+              />
+
+              {/* Location */}
+              <input
+                type="text"
+                name="location"
+                required
+                placeholder="Location"
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
+                onBlur={e => (e.target.style.outline = 'none')}
+              />
+
+              {/* Image URL */}
+              <input
+                type="text"
+                name="image"
+                required
+                placeholder="Image URL"
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
+                onBlur={e => (e.target.style.outline = 'none')}
+              />
+
+              {/* Pick Up Date */}
+              <input
+                type="date"
+                name="date"
+                required
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
+                onBlur={e => (e.target.style.outline = 'none')}
+              />
+
+              {/* Email (readonly) */}
+              <input
+                type="email"
+                name="email"
+                defaultValue={user?.email}
+                readOnly
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none cursor-not-allowed focus:outline-none"
+                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
+                onBlur={e => (e.target.style.outline = 'none')}
+              />
+            </div>
+
+            {/* Description */}
+            <textarea
+              name="description"
+              placeholder="Description"
+              required
+              className="w-full mt-4 h-32 rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
               onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
               onBlur={e => (e.target.style.outline = 'none')}
-            />
+            ></textarea>
 
-            {/* Category */}
-            <select
-              name="category"
-              className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
-              onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-              onBlur={e => (e.target.style.outline = 'none')}
-            >
-              <option disabled selected>
-                Category
-              </option>
-              <option>Pets</option>
-              <option>Food</option>
-              <option>Accessories</option>
-              <option>Care Products</option>
-            </select>
-
-            {/* Price */}
-            <input
-              type="number"
-              name="price"
-              placeholder="Price (0 if pet)"
-              className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
-              onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-              onBlur={e => (e.target.style.outline = 'none')}
-            />
-
-            {/* Location */}
-            <input
-              type="text"
-              name="location"
-              placeholder="Location"
-              className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
-              onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-              onBlur={e => (e.target.style.outline = 'none')}
-            />
-
-            {/* Image URL */}
-            <input
-              type="text"
-              name="image"
-              placeholder="Image URL"
-              className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
-              onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-              onBlur={e => (e.target.style.outline = 'none')}
-            />
-
-            {/* Pick Up Date */}
-            <input
-              type="date"
-              name="date"
-              className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
-              onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-              onBlur={e => (e.target.style.outline = 'none')}
-            />
-
-            {/* Email (readonly) */}
-            <input
-              type="email"
-              name="email"
-              defaultValue={currentUserEmail}
-              readOnly
-              className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none cursor-not-allowed focus:outline-none"
-              onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-              onBlur={e => (e.target.style.outline = 'none')}
-            />
-          </div>
-
-          {/* Description */}
-          <textarea
-            name="description"
-            placeholder="Description"
-            className="w-full mt-4 h-32 rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
-            onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-            onBlur={e => (e.target.style.outline = 'none')}
-          ></textarea>
-
-          <button className="bg-orange-400 text-white px-6 py-2 rounded-lg mt-4 hover:bg-orange-500 transition">
-            Add Pet/Product
-          </button>
+            <button className="bg-orange-400 text-white px-6 py-2 rounded-lg mt-4 hover:bg-orange-500 transition">
+              Add Pet/Product
+            </button>
+          </form>
           {/* Paw Decoration */}
           <img
             src={paw}

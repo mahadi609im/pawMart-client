@@ -20,7 +20,7 @@ function HerosSlider() {
   const nextRef = useRef(null);
 
   return (
-    <div className="relative flex flex-col justify-center items-center">
+    <div className="relative flex flex-col justify-center items-center ">
       <Swiper
         style={{
           '--swiper-navigation-color': '#fb7b53',
@@ -49,7 +49,7 @@ function HerosSlider() {
         {/* Slide 1 */}
         <SwiperSlide>
           <div className="w-full mx-auto space-y-6">
-            <div className="w-24 h-24 rounded-full bg-[#fb7a5331] border-2  border-dashed border-[#fb7b53] mx-auto flex justify-center items-center">
+            <div className="w-24 h-24 rounded-full bg-[#fb7a5331] border-2  border-dashed border-[#fb7b53] mx-auto flex justify-center items-center mb-20">
               <img
                 className="w-20 h-20 rounded-full object-cover"
                 src={homeHero1}

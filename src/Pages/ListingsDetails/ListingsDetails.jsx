@@ -1,6 +1,7 @@
 import React from 'react';
 import paw from '../../assets/paw.png';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, Link } from 'react-router';
+import { FaArrowLeft } from 'react-icons/fa';
 
 const ListingsDetails = () => {
   const listingsData = useLoaderData();
@@ -9,7 +10,17 @@ const ListingsDetails = () => {
   console.log(listingsData);
 
   return (
-    <div className="bg-[#fff8f6] min-h-screen flex justify-center items-center py-16 px-6">
+    <div className="bg-[#fff8f6] min-h-screen flex flex-col justify-center items-center py-16 px-6">
+      {/* Go Back Button */}
+      <div className="w-full max-w-5xl mb-6">
+        <Link
+          to={-1}
+          className="inline-flex items-center gap-2 text-[#fb7b53] font-semibold hover:text-orange-600 transition-all"
+        >
+          <FaArrowLeft /> Go Back
+        </Link>
+      </div>
+
       <div className="bg-white rounded-2xl shadow-lg max-w-5xl w-full flex flex-col lg:flex-row overflow-hidden border border-dashed border-[#fb7b53]">
         {/* Left Image Section */}
         <div className="lg:w-1/2 w-full flex justify-center items-center bg-[#fb7a5331] p-6">
