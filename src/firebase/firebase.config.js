@@ -6,12 +6,12 @@ import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyCr19L1z9qIA3i6uDPAaC2BcUHFjK7ARPY',
-  authDomain: 'powmart-69e38.firebaseapp.com',
-  projectId: 'powmart-69e38',
-  storageBucket: 'powmart-69e38.firebasestorage.app',
-  messagingSenderId: '339099022483',
-  appId: '1:339099022483:web:e7f37d3b0d8225feaf8966',
+  apiKey: import.meta.VITE_APIKEY,
+  authDomain: import.meta.VITE_AUTHDOMAIN,
+  projectId: import.meta.VITE_PROJECTID,
+  storageBucket: import.meta.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.VITE_MESSAGINGSENDERID,
+  appId: import.meta.VITE_APPID,
 };
 
 // Initialize Firebase
