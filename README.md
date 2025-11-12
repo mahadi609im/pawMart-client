@@ -1,16 +1,39 @@
-# React + Vite
+# PawMart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Live Site](https://pawmart-maha609im.netlify.app)
 
-Currently, two official plugins are available:
+PawMart is a community-driven platform for pet adoption and pet-related
+products.  
+Buyers, adopters, and pet owners can interact, browse, and place orders easily.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Adopt Pets:** Browse pets available for adoption and connect with owners
+  directly.
+- **Shop Pet Supplies:** Find a variety of pet food, accessories, and care
+  products.
+- **User Authentication:** Login/Register with Email & Google, secure private
+  routes.
+- **Add Listings:** Pet owners and shops can add new pets or products with full
+  details.
+- **My Orders & Listings:** Users can view their own orders and listings in a
+  tabular format.
+- **Dynamic Search & Filters:** Quickly search for pets or products and filter
+  by category.
+- **PDF Reports:** Export your orders as a PDF report for easy record keeping.
+- **Responsive Design:** Mobile-first design works beautifully on all devices.
+- **Notifications:** Toasts and alerts for successful actions like order
+  placement or listing addition.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend:** React, TailwindCSS, React Router
+- **Backend:** Node.js, Express
+- **Database:** MongoDB
+- **Authentication:** Firebase (Email & Google Login)
+- **PDF Generation:** jsPDF + jsPDF-AutoTable
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+Check the live version here:
+[https://pawmart-maha609im.netlify.app](https://pawmart-maha609im.netlify.app)
