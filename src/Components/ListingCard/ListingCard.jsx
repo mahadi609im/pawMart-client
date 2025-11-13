@@ -24,7 +24,7 @@ const ListingCard = ({ item }) => {
       </div>
 
       {/* Content Section */}
-      <div className="p-5">
+      <div className="p-5 bg-[#fb7a5331] dark:bg-[#fb7a5311]">
         {/* Title */}
         <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-100 mb-2">
           {item.name}

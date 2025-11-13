@@ -188,7 +188,7 @@ const Navbar = () => {
 
             <button
               onClick={handleSignOut}
-              className="btn bg-[#fb7b53] text-white hover:bg-orange-500 transition-all"
+              className="bg-[#fb7b53] text-white hover:bg-orange-500 transition-all btn"
               data-tooltip-id="tooltip-logout"
               data-tooltip-content="Logout from your account"
             >
