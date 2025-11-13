@@ -1,0 +1,202 @@
+[
+  {
+    "name": "Dog Comb Stainless Steel",
+    "category": "Accessories",
+    "price": 350,
+    "location": "Khulna",
+    "description": "Strong stainless steel comb for detangling long or thick fur. Helps reduce shedding and keeps your pet's coat smooth and shiny.",
+    "image": "https://example.com/dogcomb.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-29"
+  },
+  {
+    "name": "Golden Retriever Puppy",
+    "category": "Pets (Adoption)",
+    "price": 0,
+    "location": "Dhaka",
+    "description": "A super friendly 2-month-old Golden Retriever puppy looking for a loving home. Very playful, loves cuddles, and great with kids. Perfect family companion ready for adoption.",
+    "image": "https://example.com/golden.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-27"
+  },
+  {
+    "name": "Pet First Aid Kit",
+    "category": "Pet Care Products",
+    "price": 1200,
+    "location": "Sylhet",
+    "description": "Compact first aid kit designed specifically for pets. Includes bandages, antiseptic wipes, and essential tools for quick emergency care.",
+    "image": "https://example.com/firstaidkit.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-11-04"
+  },
+  {
+    "name": "German Shepherd Puppy",
+    "category": "Pets (Adoption)",
+    "price": 0,
+    "location": "Rajshahi",
+    "description": "Energetic and intelligent German Shepherd puppy ready for adoption. Ideal for families or security training. Vaccinated and healthy.",
+    "image": "https://example.com/germanshepherd.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-28"
+  },
+  {
+    "name": "Rabbit Cage Medium",
+    "category": "Accessories",
+    "price": 2200,
+    "location": "Dhaka",
+    "description": "Spacious rabbit cage with a steel frame and pull-out tray for easy cleaning. Includes a water bottle and feeding bowl. Ideal for one or two rabbits.",
+    "image": "https://example.com/rabbitcage.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-28"
+  },
+  {
+    "name": "Pet Vitamin Syrup",
+    "category": "Pet Care Products",
+    "price": 890,
+    "location": "Sylhet",
+    "description": "Complete vitamin and mineral supplement suitable for cats, dogs, and small animals. Supports immunity, appetite, and healthy growth.",
+    "image": "https://example.com/vitaminsyrup.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-11-03"
+  },
+  {
+    "name": "Cat Litter Box Deluxe",
+    "category": "Accessories",
+    "price": 1500,
+    "location": "Chittagong",
+    "description": "High-quality litter box made from durable plastic with an easy-clean tray. Ideal for small to large cats. Keeps your home odor-free and hygienic for longer periods.",
+    "image": "https://example.com/litterbox.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-29"
+  },
+  {
+    "name": "Persian Kitten",
+    "category": "Pets (Adoption)",
+    "price": 0,
+    "location": "Sylhet",
+    "description": "Adorable white Persian kitten, 3 months old. Extremely playful, well-behaved, and comfortable indoors. Loves attention and suitable for apartment living.",
+    "image": "https://example.com/persian.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-30"
+  },
+  {
+    "name": "Bird Food Mix",
+    "category": "Pet Food",
+    "price": 550,
+    "location": "Barisal",
+    "description": "A balanced seed mix for parrots, canaries, and finches. Promotes feather health and supports breeding during seasonal changes.",
+    "image": "https://example.com/birdfood.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-25"
+  },
+  {
+    "name": "Dog Shampoo Herbal",
+    "category": "Pet Care Products",
+    "price": 680,
+    "location": "Khulna",
+    "description": "Natural herbal dog shampoo enriched with aloe vera and chamomile extracts. Helps reduce itching, nourishes fur, and gives a long-lasting fresh scent.",
+    "image": "https://example.com/dogshampoo.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-11-01"
+  },
+  {
+    "name": "Husky Puppy",
+    "category": "Pets (Adoption)",
+    "price": 0,
+    "location": "Dhaka",
+    "description": "A healthy, energetic Husky puppy with blue eyes and a playful attitude. Needs a caring home with outdoor space and an active family.",
+    "image": "https://example.com/husky.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-27"
+  },
+  {
+    "name": "Hamster Cage Mini",
+    "category": "Accessories",
+    "price": 1250,
+    "location": "Dhaka",
+    "description": "Compact and colorful cage suitable for hamsters or mice. Includes an exercise wheel and water bottle for maximum fun and comfort.",
+    "image": "https://example.com/hamstercage.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-30"
+  },
+  {
+    "name": "Cat Food Ocean Mix",
+    "category": "Pet Food",
+    "price": 780,
+    "location": "Rajshahi",
+    "description": "Premium cat food with ocean fish and chicken flavor. Packed with omega fatty acids and essential nutrients for shiny coats and strong immunity.",
+    "image": "https://example.com/catfood.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-31"
+  },
+  {
+    "name": "Pet Grooming Brush Set",
+    "category": "Pet Care Products",
+    "price": 950,
+    "location": "Chittagong",
+    "description": "Complete grooming kit including a brush, comb, and nail clipper. Designed for safe and comfortable grooming sessions at home.",
+    "image": "https://example.com/groomingset.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-11-01"
+  },
+  {
+    "name": "Puppy Milk Replacer",
+    "category": "Pet Food",
+    "price": 640,
+    "location": "Khulna",
+    "description": "Premium milk replacer formulated for newborn puppies. Contains essential proteins, DHA, and calcium for healthy growth.",
+    "image": "https://example.com/puppymilk.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-29"
+  },
+  {
+    "name": "Labrador Puppy",
+    "category": "Pets (Adoption)",
+    "price": 0,
+    "location": "Dhaka",
+    "description": "A cheerful Labrador puppy that loves human company. Fully vaccinated and dewormed. Looking for a warm, pet-friendly family.",
+    "image": "https://example.com/labrador.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-31"
+  },
+  {
+    "name": "Parrot Cage Large",
+    "category": "Accessories",
+    "price": 2800,
+    "location": "Barisal",
+    "description": "Spacious cage made with rust-free metal, comes with perches, toys, and feeders. Provides comfort and safety for parrots of all sizes.",
+    "image": "https://example.com/parrotcage.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-26"
+  },
+  {
+    "name": "Fish Food Flakes",
+    "category": "Pet Food",
+    "price": 350,
+    "location": "Dhaka",
+    "description": "A nutritious blend of tropical fish flakes formulated with natural proteins and vitamins. Keeps your fish active, colorful, and healthy in all seasons.",
+    "image": "https://example.com/fishfood.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-10-25"
+  },
+  {
+    "name": "Dog Dental Chews",
+    "category": "Pet Care Products",
+    "price": 499,
+    "location": "Dhaka",
+    "description": "Dental chews designed to clean dog teeth, reduce tartar buildup, and freshen breath. Perfect for daily oral hygiene and healthy gums.",
+    "image": "https://example.com/dentalchews.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-11-02"
+  },
+  {
+    "name": "Cat Treats Bites",
+    "category": "Pet Food",
+    "price": 690,
+    "location": "Dhaka",
+    "description": "Soft and chewy tuna-flavored treats made with real fish. Perfect for rewarding good behavior and training your cat. Rich in omega-3 for a shiny coat.",
+    "image": "https://example.com/cattreats.jpg",
+    "email": "maha609im@gmail.com",
+    "date": "2025-11-10"
+  }
+]

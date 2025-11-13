@@ -216,7 +216,7 @@ const ListingsDetails = () => {
                 placeholder="Additional Notes"
                 className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
               ></textarea>
-              <div className="modal-action mt-2 flex justify-end gap-2">
+              <div className="modal-action mt-2 flex justify-end items-center gap-2">
                 <button
                   type="button"
                   className="btn"
@@ -224,7 +224,7 @@ const ListingsDetails = () => {
                 >
                   Close
                 </button>
-                <button type="submit" className="btn btn-primary">
+                <button className="bg-orange-400 text-white btn rounded-lg hover:bg-orange-500 transition">
                   Submit Order
                 </button>
               </div>

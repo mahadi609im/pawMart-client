@@ -352,7 +352,7 @@ const MyListing = () => {
                 >
                   Close
                 </button>
-                <button type="submit" className="btn btn-primary">
+                <button className="bg-orange-400 text-white btn rounded-lg hover:bg-orange-500 transition">
                   Update
                 </button>
               </div>
