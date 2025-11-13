@@ -4,7 +4,7 @@ import paw2 from '../../assets/paw2.png';
 import loginBg from '../../assets/listingsFormBg.webp';
 import { FcGoogle } from 'react-icons/fc';
 
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/ContextProvider';
@@ -19,7 +19,7 @@ const Register = () => {
     registerAuthCreate,
     updateUserProfile,
   } = useContext(AuthContext);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
 
   const navigate = useNavigate(null);
 
@@ -68,7 +68,6 @@ const Register = () => {
       .then(result => {
         const user = result.user;
 
-        // ✅ Step 2: Update profile (name & photo)
         updateUserProfile({
           displayName: name,
           photoURL: photo,
@@ -110,8 +109,8 @@ const Register = () => {
           message = 'Something went wrong.';
         }
 
-        setError(message);
-        toast.error(error);
+        toast.error(message);
+        console.log(message);
       });
   };
 
@@ -120,9 +119,9 @@ const Register = () => {
       .then(result => {
         setUser(result.user);
         navigate('/');
+        toast.success('Google SignIn successfully');
       })
       .catch(error => {
-        setError(error.message);
         toast.error(error.message);
       });
   };

@@ -165,7 +165,7 @@ const MyListing = () => {
                       <td className="py-3 px-6 font-medium text-gray-800 dark:text-slate-200">
                         {item.name}
                       </td>
-                      <td className="py-3 px-6 text-gray-800 dark:text-slate-100 badge badge-ghost">
+                      <td className="py-3 px-6 text-gray-800 badge badge-ghost">
                         {item.category}
                       </td>
                       <td className="py-3 px-6 text-gray-700 dark:text-slate-400 font-semibold ">
@@ -201,57 +201,74 @@ const MyListing = () => {
 
         {/* Mobile Card View */}
         <div className="md:hidden flex flex-col gap-4">
-          {myListings?.map(item => (
-            <div
-              key={item._id}
-              className="border border-dashed border-[#fb7b53] rounded-xl p-4 shadow hover:shadow-lg transition-all bg-[#fb7a5331]"
-            >
-              <div className="flex items-center gap-4">
-                {item.image && (
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-20 h-20 rounded-lg object-cover border border-dashed border-[#fb7b53]"
-                  />
-                )}
-                <div className="flex flex-col space-y-1 text-slate-800">
-                  <h3 className="text-lg font-bold text-gray-800">
-                    {item.name}
-                  </h3>
-                  <p>
-                    <span className="font-semibold text-[#fb7b53]">
-                      Category:
-                    </span>{' '}
-                    {item.category}
-                  </p>
-                  <p>
-                    <span className="font-semibold text-[#fb7b53]">Price:</span>{' '}
-                    {item.price === 0 || item.price === ''
-                      ? 'Free Adoption'
-                      : `৳${item.price}`}
-                  </p>
-                  <p>
-                    <span className="font-semibold text-[#fb7b53]">Date:</span>{' '}
-                    {item.date}
-                  </p>
-                </div>
-              </div>
-              <div className="flex justify-end gap-3 mt-3">
-                <div
-                  onClick={() => openModal(item)}
-                  className="text-[#fb7b53] transform transition-transform duration-300 w-10 h-10 rounded-full bg-[#fb7a5331] border border-dashed hover:bg-[#fb7b53] hover:text-white hover:border-2 flex justify-center items-center"
-                >
-                  <FaEdit size={16} />
-                </div>
-                <div
-                  onClick={() => handleDeleteListings(item._id)}
-                  className="text-[#fb7b53] transform transition-transform duration-300 w-10 h-10 rounded-full bg-[#fb7a5331] border border-dashed hover:bg-[#fb7b53] hover:text-white hover:border-2 flex justify-center items-center"
-                >
-                  <FaTrashAlt size={16} />
-                </div>
-              </div>
+          {myListings.length < 1 ? (
+            <div className="py-20 text-center border border-dashed border-[#fb7b53] rounded-xl shadow bg-white dark:bg-transparent">
+              <h3 className="text-lg font-semibold text-[#fb7b53] relative inline-block mx-auto">
+                No listings available
+                <img
+                  className="w-6 h-6 absolute -top-3 -right-5"
+                  src={paw2}
+                  alt="paw"
+                />
+              </h3>
             </div>
-          ))}
+          ) : (
+            myListings.map(item => (
+              <div
+                key={item._id}
+                className="border border-dashed border-[#fb7b53] rounded-xl p-4 shadow hover:shadow-lg transition-all bg-[#fb7a5331]"
+              >
+                <div className="flex items-center gap-4">
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-20 h-20 rounded-lg object-cover border border-dashed border-[#fb7b53]"
+                    />
+                  )}
+                  <div className="flex flex-col space-y-1 text-slate-800 dark:text-slate-300">
+                    <h3 className="text-lg font-bold text-gray-800 dark:text-slate-200">
+                      {item.name}
+                    </h3>
+                    <p>
+                      <span className="font-semibold text-[#fb7b53]">
+                        Category:
+                      </span>{' '}
+                      {item.category}
+                    </p>
+                    <p>
+                      <span className="font-semibold text-[#fb7b53]">
+                        Price:
+                      </span>{' '}
+                      {item.price === 0 || item.price === ''
+                        ? 'Free Adoption'
+                        : `৳${item.price}`}
+                    </p>
+                    <p>
+                      <span className="font-semibold text-[#fb7b53]">
+                        Date:
+                      </span>{' '}
+                      {item.date}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex justify-end gap-3 mt-3">
+                  <div
+                    onClick={() => openModal(item)}
+                    className="text-[#fb7b53] transform transition-transform duration-300 w-10 h-10 rounded-full bg-[#fb7a5331] border border-dashed hover:bg-[#fb7b53] hover:text-white hover:border-2 flex justify-center items-center"
+                  >
+                    <FaEdit size={16} />
+                  </div>
+                  <div
+                    onClick={() => handleDeleteListings(item._id)}
+                    className="text-[#fb7b53] transform transition-transform duration-300 w-10 h-10 rounded-full bg-[#fb7a5331] border border-dashed hover:bg-[#fb7b53] hover:text-white hover:border-2 flex justify-center items-center"
+                  >
+                    <FaTrashAlt size={16} />
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
       {/* Modal */}
@@ -269,7 +286,7 @@ const MyListing = () => {
                   />
                 </h3>
               </div>
-              <h2 className="titleFont text-slate-950 dark:text-slate-100 text-2xl md:text-3xl font-bold">
+              <h2 className="titleFont text-slate-950  text-2xl md:text-3xl font-bold">
                 Update Your Listing
               </h2>
             </div>
@@ -282,14 +299,14 @@ const MyListing = () => {
                   placeholder="Product / Pet Name"
                   defaultValue={selectedItem.name}
                   required
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
                 />
                 <select
                   name="category"
                   value={category}
                   onChange={e => setCategory(e.target.value)}
                   required
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
                 >
                   <option disabled value="">
                     Category
@@ -304,7 +321,7 @@ const MyListing = () => {
                   name="price"
                   placeholder="Price (0 if pet)"
                   defaultValue={selectedItem.price}
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
                 />
                 <input
                   type="text"
@@ -312,7 +329,7 @@ const MyListing = () => {
                   placeholder="Location"
                   defaultValue={selectedItem.location}
                   required
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
                 />
                 <input
                   type="text"
@@ -320,21 +337,21 @@ const MyListing = () => {
                   placeholder="Image URL"
                   defaultValue={selectedItem.image}
                   required
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
                 />
                 <input
                   type="date"
                   name="date"
                   defaultValue={selectedItem.date}
                   required
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
                 />
                 <input
                   type="email"
                   name="email"
                   defaultValue={user?.email}
                   readOnly
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none cursor-not-allowed focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none cursor-not-allowed focus:outline-none"
                 />
               </div>
 
@@ -343,7 +360,7 @@ const MyListing = () => {
                 placeholder="Description"
                 required
                 defaultValue={selectedItem.description}
-                className="w-full mt-4 h-32 rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
+                className="w-full mt-4 h-32 rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
               ></textarea>
 
               <div className="modal-action mt-4">
