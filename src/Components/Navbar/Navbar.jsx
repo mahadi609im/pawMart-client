@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, NavLink } from 'react-router';
 import paw from '../../assets/paw.png';
 import { AuthContext } from '../../context/ContextProvider';
@@ -8,6 +8,17 @@ import 'react-tooltip/dist/react-tooltip.css';
 
 const Navbar = () => {
   const { user, signOutAuthUser } = useContext(AuthContext);
+
+  // 🔆 Load previously selected theme from localStorage
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'winter';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }, []);
+
+  const handleSignOut = () => {
+    signOutAuthUser();
+    toast.success('Logout Successfully');
+  };
 
   const links = [
     { name: 'Home', path: '/', tooltip: 'Go to Home Page' },
@@ -33,19 +44,16 @@ const Navbar = () => {
       : []),
   ];
 
-  const handleSignOut = () => {
-    signOutAuthUser();
-    toast.success('Logout Successfully');
-  };
-
   return (
     <div className="navbar conCls py-4 z-50">
+      {/* ---------------- Navbar Start ---------------- */}
       <div className="navbar-start">
+        {/* Mobile Dropdown */}
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 text-black"
+              className="h-5 w-5 text-slate-900 dark:text-slate-100"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -58,6 +66,8 @@ const Navbar = () => {
               />
             </svg>
           </div>
+
+          {/* Mobile Menu */}
           <ul
             tabIndex={-1}
             className="menu menu-sm dropdown-content bg-[#fb7a53a4] rounded-box mt-3 w-36 p-2 shadow font-medium"
@@ -68,45 +78,40 @@ const Navbar = () => {
                   to={link.path}
                   className={({ isActive }) =>
                     isActive
-                      ? 'border-b-2 border-dashed border-[#fb7b53] bg-[#fb7a5323] text-slate-950 px-3 py-2 rounded-md font-semibold '
-                      : 'hover:border-b-2 border-dashed hover:border-[#fb7b53] hover:bg-[#fb7a5323] hover:text-slate-950 px-3 py-2 rounded-md'
+                      ? 'border-b-2 border-dashed border-[#fb7b53] bg-[#fb7a5323] text-slate-900 dark:text-slate-100 px-3 py-2 rounded-md font-semibold'
+                      : 'hover:border-b-2 border-dashed hover:border-[#fb7b53] hover:bg-[#fb7a5323] hover:text-slate-900 dark:text-slate-100 dark:hover:text-white px-3 py-2 rounded-md'
                   }
                   data-tooltip-id={`tooltip-${idx}`}
                   data-tooltip-content={link.tooltip}
                 >
                   {link.name}
                 </NavLink>
-                <Tooltip
-                  id={`tooltip-${idx}`}
-                  place="right"
-                  effect="solid"
-                  globalEventOff="click"
-                  style={{ zIndex: 9999 }}
-                  anchorSelect={`[data-tooltip-id="tooltip-${idx}"]`}
-                />
+                <Tooltip id={`tooltip-${idx}`} place="right" effect="solid" />
               </li>
             ))}
           </ul>
         </div>
 
+        {/* Logo */}
         <Link to="/" className="text-xl flex items-center justify-center">
-          <img className="hidden w-12 h-auto  md:block" src={paw} alt="paw" />
-          <h2 className=" md:text-2xl lg:text-3xl font-bold text-slate-950">
-            paw<span className="text-[#fb7b53] md:text-slate-950">Mart</span>
+          <img className="hidden w-12 h-auto md:block" src={paw} alt="paw" />
+          <h2 className="md:text-2xl lg:text-3xl font-bold text-slate-900 dark:text-slate-100">
+            paw<span className="text-[#fb7b53] dark:text-slate-100">Mart</span>
           </h2>
         </Link>
       </div>
 
+      {/* ---------------- Navbar Center ---------------- */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 font-medium text-slate-600 space-x-3">
+        <ul className="menu menu-horizontal px-1 font-medium space-x-3">
           {links.map((link, idx) => (
             <li key={idx}>
               <NavLink
                 to={link.path}
                 className={({ isActive }) =>
                   isActive
-                    ? 'border-b-2 border-dashed border-[#fb7b53] bg-[#fb7a5323] text-slate-950 px-3 py-2 rounded-md font-semibold'
-                    : 'hover:border-b-2 border-dashed hover:border-[#fb7b53] hover:bg-[#fb7a5323] hover:text-slate-950 px-3 py-2 rounded-md'
+                    ? 'border-b-2 border-dashed border-[#fb7b53] bg-[#fb7a5323] text-slate-900 dark:text-slate-100 px-3 py-2 rounded-md font-semibold'
+                    : 'hover:border-b-2 border-dashed hover:border-[#fb7b53] hover:bg-[#fb7a5323] hover:text-slate-900 dark:text-slate-100 dark:hover:text-white px-3 py-2 rounded-md'
                 }
                 data-tooltip-id={`tooltip-center-${idx}`}
                 data-tooltip-content={link.tooltip}
@@ -123,10 +128,50 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="navbar-end flex gap-3">
+      {/* ---------------- Navbar End ---------------- */}
+      <div className="navbar-end flex gap-3 items-center">
+        {/* 🌗 Theme Toggle Button */}
+        <div className="flex items-center justify-center">
+          <label className="swap swap-rotate cursor-pointer">
+            <input
+              type="checkbox"
+              onChange={() => {
+                const currentTheme =
+                  document.documentElement.getAttribute('data-theme');
+                if (currentTheme === 'night') {
+                  document.documentElement.setAttribute('data-theme', 'winter');
+                  localStorage.setItem('theme', 'winter');
+                } else {
+                  document.documentElement.setAttribute('data-theme', 'night');
+                  localStorage.setItem('theme', 'night');
+                }
+              }}
+              defaultChecked={localStorage.getItem('theme') === 'night'}
+            />
+
+            {/* Sun icon */}
+            <svg
+              className="swap-off fill-current w-7 h-7 text-[#fb7b53] transition-all"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path d="M5.64 17l-1.41 1.41L4.22 20l1.41-1.41L5.64 17zM1 13h3v-2H1v2zm10-9h2V1h-2v3zm7.36 4.05L19.77 4.64 18.36 3.23 16.95 4.64 18.36 6.05zM23 13v-2h-3v2h3zm-10 9h2v-3h-2v3zm4.64-2.05l1.41 1.41 1.41-1.41-1.41-1.41-1.41 1.41zM12 7a5 5 0 100 10 5 5 0 000-10z" />
+            </svg>
+
+            {/* Moon icon */}
+            <svg
+              className="swap-on fill-current w-7 h-7 text-[#fb7b53] transition-all"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path d="M21.64 13.65A9 9 0 0110.35 2.36 9.003 9.003 0 002 12a9 9 0 0012.64 8.65 9.003 9.003 0 007-7z" />
+            </svg>
+          </label>
+        </div>
+
+        {/* 👤 Auth Section */}
         {user ? (
           <>
-            {/* Profile Link */}
             <img
               referrerPolicy="no-referrer"
               className="w-14 h-14 object-cover bg-[#fb7a5331] border border-dashed border-[#fb7b53] rounded-full p-1"
@@ -141,7 +186,6 @@ const Navbar = () => {
               }}
             />
 
-            {/* Logout Button */}
             <button
               onClick={handleSignOut}
               className="btn bg-[#fb7b53] text-white hover:bg-orange-500 transition-all"
@@ -156,7 +200,7 @@ const Navbar = () => {
           <>
             <Link
               to="/login"
-              className="btn bg-[#fb7a5331] border border-dashed border-[#fb7b53]"
+              className="btn bg-[#fb7a5331] border border-dashed border-[#fb7b53] text-slate-900 dark:text-slate-100"
               data-tooltip-id="tooltip-login"
               data-tooltip-content="Login to your account"
             >

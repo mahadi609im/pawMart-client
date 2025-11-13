@@ -32,7 +32,7 @@ const ListingSection = () => {
               />
             </h3>
           </div>
-          <h2 className="titleFont text-slate-950 text-3xl md:text-4xl text-center font-bold">
+          <h2 className="titleFont text-slate-950 dark:text-slate-100 text-3xl md:text-4xl text-center font-bold">
             Recently Added Pets & Products
           </h2>
         </div>

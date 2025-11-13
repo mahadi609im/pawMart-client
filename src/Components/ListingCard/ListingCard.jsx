@@ -6,7 +6,7 @@ const ListingCard = ({ item }) => {
   const navigate = useNavigate('');
 
   return (
-    <div className="details bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-dashed hover:border-[#fb7b53]">
+    <div className="details bg-white dark:bg-transparent shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-dashed hover:border-[#fb7b53]">
       {/* Image Section */}
       <div className="relative">
         <img
@@ -26,7 +26,7 @@ const ListingCard = ({ item }) => {
       {/* Content Section */}
       <div className="p-5">
         {/* Title */}
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-100 mb-2">
           {item.name}
         </h3>
 

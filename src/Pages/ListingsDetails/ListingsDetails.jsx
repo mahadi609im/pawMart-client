@@ -53,7 +53,7 @@ const ListingsDetails = () => {
   };
 
   return (
-    <div className="bg-[#fff8f6] min-h-screen flex flex-col justify-center items-center py-16 px-6">
+    <div className="bg-[#fff8f6] dark:bg-transparent min-h-screen flex flex-col justify-center items-center py-16 px-6">
       {/* Go Back Button */}
       <div className="w-full max-w-5xl mb-6">
         <Link
@@ -64,7 +64,7 @@ const ListingsDetails = () => {
         </Link>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-lg max-w-5xl w-full flex flex-col lg:flex-row overflow-hidden border border-dashed border-[#fb7b53]">
+      <div className="bg-white dark:bg-transparent rounded-2xl shadow-lg max-w-5xl w-full flex flex-col lg:flex-row overflow-hidden border border-dashed border-[#fb7b53]">
         {/* Left Image Section */}
         <div className="lg:w-1/2 w-full flex justify-center items-center bg-[#fb7a5331] p-6">
           <img
@@ -86,11 +86,13 @@ const ListingsDetails = () => {
               />
               Pet Details
             </h3>
-            <h2 className="text-3xl font-bold text-slate-950 mt-2">{name}</h2>
+            <h2 className="text-3xl font-bold text-slate-950 dark:text-slate-50 mt-2">
+              {name}
+            </h2>
           </div>
 
           {/* Info Grid */}
-          <div className="flex flex-col md:flex-row gap-8 text-slate-800 text-base">
+          <div className="flex flex-col md:flex-row gap-8 text-slate-800 dark:text-slate-300 text-base">
             <div>
               <p>
                 <span className="font-semibold text-[#fb7b53]">Category:</span>{' '}
@@ -118,7 +120,9 @@ const ListingsDetails = () => {
           {/* Description */}
           <div className="mt-6 text-base">
             <h4 className="font-semibold text-[#fb7b53] mb-2">Description</h4>
-            <p className="text-gray-700 leading-relaxed">{description}</p>
+            <p className="text-gray-700 dark:text-slate-500 leading-relaxed">
+              {description}
+            </p>
           </div>
 
           {/* Order Now Button */}
@@ -153,7 +157,7 @@ const ListingsDetails = () => {
                   />
                 </h3>
               </div>
-              <h2 className="titleFont text-slate-950 text-2xl md:text-3xl font-bold">
+              <h2 className="titleFont text-slate-950 dark:text-slate-100 text-2xl md:text-3xl font-bold">
                 Place Your Order
               </h2>
             </div>
@@ -166,28 +170,28 @@ const ListingsDetails = () => {
                 name="buyerName"
                 defaultValue={user?.displayName}
                 readOnly
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none cursor-not-allowed"
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none cursor-not-allowed"
               />
               <input
                 type="email"
                 name="email"
                 defaultValue={user?.email}
                 readOnly
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none cursor-not-allowed"
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none cursor-not-allowed"
               />
               <input
                 type="text"
                 name="listingName"
                 defaultValue={name}
                 readOnly
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none cursor-not-allowed"
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none cursor-not-allowed"
               />
               {category !== 'Pets' && (
                 <input
                   type="number"
                   name="quantity"
                   placeholder="Quantity"
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
                   required
                 />
               )}
@@ -195,26 +199,26 @@ const ListingsDetails = () => {
                 type="text"
                 name="address"
                 placeholder="Address"
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
                 required
               />
               <input
                 type="date"
                 name="date"
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
                 required
               />
               <input
                 type="tel"
                 name="phone"
                 placeholder="Phone"
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
                 required
               />
               <textarea
                 name="notes"
                 placeholder="Additional Notes"
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
               ></textarea>
               <div className="modal-action mt-2 flex justify-end items-center gap-2">
                 <button

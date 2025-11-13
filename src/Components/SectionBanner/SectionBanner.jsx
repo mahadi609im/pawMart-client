@@ -28,11 +28,11 @@ const SectionBanner = () => {
             />
           </h4>
 
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 leading-snug">
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 leading-snug">
             Love, Care & Comfort for Every Pet 🐾
           </h2>
 
-          <p className="text-gray-600 md:pr-6">
+          <p className="text-gray-600 dark:text-slate-400 md:pr-6">
             From toys to treats, explore a world full of comfort and happiness
             for your furry friends. At{' '}
             <span className="text-[#fb7b53] font-semibold">pawMart</span>, we

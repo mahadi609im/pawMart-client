@@ -49,9 +49,9 @@ const Category = () => {
   });
 
   return (
-    <div className="py-10 bg-white">
+    <div className="py-10 bg-white dark:bg-[#0F172A]">
       <div className="conCls">
-        <h2 className="titleFont text-slate-950 text-3xl text-center font-bold items-start gap-2 relative inline-block mb-6">
+        <h2 className="titleFont text-slate-950 dark:text-slate-100 text-3xl text-center font-bold items-start gap-2 relative inline-block mb-6">
           Categories
           <img className="w-8 h-8 absolute -top-4 -right-6" src={paw2} alt="" />
         </h2>
@@ -61,7 +61,7 @@ const Category = () => {
             <Link
               to={`/category-filtered-product/${cat.name}`}
               key={index}
-              className="category-card bg-white shadow-md rounded-xl flex items-center justify-between px-5 py-4 hover:bg-[#fb7a5331] border border-dashed hover:border-[#fb7b53] cursor-pointer transition-all"
+              className="category-card shadow-md rounded-xl flex items-center justify-between px-5 py-4 hover:bg-[#fb7a5331] dark:hover:bg-[#fb7a5315] border border-dashed hover:border-[#fb7b53] cursor-pointer transition-all"
             >
               <div className="flex items-center gap-4">
                 <img
@@ -70,7 +70,7 @@ const Category = () => {
                   className="w-16 h-16 object-cover bg-[#fb7a5331] border border-dashed border-[#fb7b53] rounded-full p-2"
                 />
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-300">
                     {cat.name}
                   </h3>
                   <p className="text-sm text-gray-500">

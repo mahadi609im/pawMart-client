@@ -44,7 +44,7 @@ const PetSupplies = () => {
               />
             </h3>
           </div>
-          <h2 className="titleFont text-slate-950 text-3xl md:text-4xl text-center font-bold">
+          <h2 className="titleFont text-slate-950 dark:text-slate-100 text-3xl md:text-4xl text-center font-bold">
             Explore All Pets & Supplies
           </h2>
 
@@ -53,7 +53,7 @@ const PetSupplies = () => {
               type="search"
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
-              className="border border-dashed border-[#fb7b53] rounded-lg px-4 py-2 w-full focus:outline-none text-slate-950 bg-transparent relative z-20"
+              className="border border-dashed border-[#fb7b53] rounded-lg px-4 py-2 w-full focus:outline-none text-slate-950 dark:text-slate-100 bg-transparent relative z-20"
             />
             {!searchTerm && (
               <span className="absolute left-4 top-2 text-slate-600 pointer-events-none z-10">

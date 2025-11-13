@@ -60,10 +60,10 @@ function HerosSlider() {
               <h2 className="text-4xl titleFont font-bold text-amber-600">
                 Sarah Johnson
               </h2>
-              <h4 className="text-xl font-semibold text-gray-400 mt-1">
+              <h4 className="text-xl font-semibold text-gray-400 dark:text-slate-200 mt-1">
                 Pet Adopter
               </h4>
-              <p className="text-gray-500 text-lg leading-relaxed mt-3">
+              <p className="text-gray-500 dark:text-slate-400 text-lg leading-relaxed mt-3">
                 “Sarah adopted two rescued kittens and gave them a warm, caring
                 home. Her love for animals encourages many others to choose
                 adoption and change a pet’s life forever.”
@@ -86,10 +86,10 @@ function HerosSlider() {
               <h2 className="text-4xl titleFont font-bold text-amber-600">
                 Michael Chen
               </h2>
-              <h4 className="text-xl font-semibold text-gray-400 mt-1">
+              <h4 className="text-xl font-semibold text-gray-400 dark:text-slate-200 mt-1">
                 Pet Caregiver
               </h4>
-              <p className="text-gray-500 text-lg leading-relaxed mt-3">
+              <p className="text-gray-500 dark:text-slate-400 text-lg leading-relaxed mt-3">
                 “Michael has spent years caring for stray dogs and helping them
                 find safe shelters. His kindness and consistency inspire
                 everyone around him.”
@@ -112,10 +112,10 @@ function HerosSlider() {
               <h2 className="text-4xl titleFont font-bold text-amber-600">
                 Emma Williams
               </h2>
-              <h4 className="text-xl font-semibold text-gray-400 mt-1">
+              <h4 className="text-xl font-semibold text-gray-400 dark:text-slate-200 mt-1">
                 Animal Volunteer
               </h4>
-              <p className="text-gray-500 text-lg leading-relaxed mt-3">
+              <p className="text-gray-500 dark:text-slate-400 text-lg leading-relaxed mt-3">
                 “Emma works with local shelters to organize pet care programs
                 and adoption events. Her dedication makes a huge impact on
                 rescued animals’ lives.”
@@ -140,10 +140,10 @@ function HerosSlider() {
               <h2 className="text-4xl titleFont font-bold text-amber-600">
                 David Rodriguez
               </h2>
-              <h4 className="text-xl font-semibold text-gray-400 mt-1">
+              <h4 className="text-xl font-semibold text-gray-400 dark:text-slate-200 mt-1">
                 Shelter Manager
               </h4>
-              <p className="text-gray-500 text-lg leading-relaxed mt-3">
+              <p className="text-gray-500 dark:text-slate-400 text-lg leading-relaxed mt-3">
                 “David manages a busy animal shelter where dozens of pets are
                 cared for every week. His compassion ensures every animal feels
                 safe and loved.”
@@ -168,10 +168,10 @@ function HerosSlider() {
               <h2 className="text-4xl titleFont font-bold text-amber-600">
                 Lily Anderson
               </h2>
-              <h4 className="text-xl font-semibold text-gray-400 mt-1">
+              <h4 className="text-xl font-semibold text-gray-400 dark:text-slate-200 mt-1">
                 Animal Rescuer
               </h4>
-              <p className="text-gray-500 text-lg leading-relaxed mt-3">
+              <p className="text-gray-500 dark:text-slate-400 text-lg leading-relaxed mt-3">
                 “Lily dedicates her weekends to rescuing injured street animals
                 and helping them recover. Her actions speak louder than words,
                 saving countless lives.”

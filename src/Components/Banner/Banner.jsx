@@ -70,7 +70,7 @@ function Banner() {
                 Welcome to PetPath
               </p>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-slate-100 leading-tight mb-6">
                 The Best Care for Your Best Friend
               </h1>
 
@@ -106,7 +106,7 @@ function Banner() {
                 Caring With Love 🐾
               </p>
 
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900 mb-5">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900 dark:text-slate-100 mb-5">
                 Your Pet’s Happiness <br className="hidden md:block" /> Is Our
                 Priority
               </h1>

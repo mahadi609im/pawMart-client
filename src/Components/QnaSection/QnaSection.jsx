@@ -34,14 +34,14 @@ const QnaSection = () => {
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-white dark:bg-slate-900">
       <div className="conCls">
         {/* Heading */}
         <div className="max-w-4xl mx-auto text-left">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4 titleFont">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-slate-100 mb-4 titleFont">
             Why Adopt from <span className="text-[#fb7b53]">PawMart?</span>
           </h2>
-          <p className="text-gray-700 leading-relaxed">
+          <p className="text-gray-700 dark:text-slate-400 leading-relaxed">
             At PawMart, we believe every pet deserves a loving home. By adopting
             instead of buying, you’re helping reduce animal homelessness and
             giving a second chance to a furry friend in need. Every adoption
@@ -55,7 +55,7 @@ const QnaSection = () => {
             <div className="text-[#fb7b53] mt-1">
               <FaHeart size={18} />
             </div>
-            <p className="text-gray-700">
+            <p className="text-gray-700 dark:text-slate-400">
               You save a life and make space for another animal in need.
             </p>
           </div>
@@ -64,7 +64,7 @@ const QnaSection = () => {
             <div className="text-[#fb7b53] mt-1">
               <FaPaw size={18} />
             </div>
-            <p className="text-gray-700">
+            <p className="text-gray-700 dark:text-slate-400">
               Adopted pets are loyal, loving, and grateful for a second chance.
             </p>
           </div>
@@ -73,7 +73,7 @@ const QnaSection = () => {
             <div className="text-[#fb7b53] mt-1">
               <FaHome size={18} />
             </div>
-            <p className="text-gray-700">
+            <p className="text-gray-700 dark:text-slate-400">
               Each adoption helps build a kinder community for animals and
               people.
             </p>
@@ -96,7 +96,7 @@ const QnaSection = () => {
 
         {/* FAQ Section */}
         <div className="max-w-4xl mx-auto mt-14 px-6">
-          <h3 className="text-xl md:text-2xl  font-bold text-gray-900 mb-6">
+          <h3 className="text-xl md:text-2xl  font-bold text-gray-900 dark:text-slate-100 mb-6">
             Frequently Asked Questions
           </h3>
 
@@ -104,7 +104,7 @@ const QnaSection = () => {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className={`border-b p-6 cursor-pointer ${
+                className={`border-b dark:aborder-slate-800 p-6 cursor-pointer ${
                   openIndex === index
                     ? 'bg-[#fb7a5331] border-dashed border-[#fb7b53] text-white border rounded-md'
                     : 'border-gray-200'
@@ -120,7 +120,7 @@ const QnaSection = () => {
                     </h3>
                   ) : (
                     <h3
-                      className={`text-gray-800 titleFont text-base md:text-lg font-bold`}
+                      className={`text-gray-800 dark:text-slate-400 titleFont text-base md:text-lg font-bold`}
                     >
                       {faq.question}
                     </h3>
@@ -134,7 +134,7 @@ const QnaSection = () => {
                   />
                 </div>
                 {openIndex === index && (
-                  <p className="text-slate-600 mt-2 text-sm md:text-base">
+                  <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm md:text-base">
                     {faq.answer}
                   </p>
                 )}

@@ -68,7 +68,7 @@ const MyOrders = () => {
   };
 
   return (
-    <div className="bg-[#fff8f6] min-h-screen py-20 relative">
+    <div className="bg-[#fff8f6] dark:bg-transparent min-h-screen py-20 relative">
       <title>My orders | pawMart</title>
       <div className="conCls relative z-10">
         {/* Header */}
@@ -81,7 +81,7 @@ const MyOrders = () => {
               alt="paw"
             />
           </h3>
-          <h2 className="titleFont text-slate-950 text-3xl md:text-4xl font-bold">
+          <h2 className="titleFont text-slate-950 dark:text-slate-100 text-3xl md:text-4xl font-bold">
             Your adoption & supply orders at a glance
           </h2>
           <p className="text-gray-600 text-base md:w-2/3 mx-auto">

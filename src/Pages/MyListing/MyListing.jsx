@@ -114,13 +114,13 @@ const MyListing = () => {
               />
             </h3>
           </div>
-          <h2 className="titleFont text-slate-950 text-3xl md:text-4xl font-bold">
+          <h2 className="titleFont text-slate-950 dark:text-slate-100 text-3xl md:text-4xl font-bold">
             Manage all pets & products here.
           </h2>
         </div>
 
         {/* Desktop Table */}
-        <div className="hidden md:block overflow-x-auto shadow-lg rounded-xl border border-dashed border-[#fb7b53] bg-white">
+        <div className="hidden md:block overflow-x-auto shadow-lg rounded-xl border border-dashed border-[#fb7b53] bg-white dark:bg-transparent">
           <table className="min-w-full text-left border-collapse">
             <thead className="bg-[#fb7a5331] text-[#fb7b53]">
               <tr>
@@ -151,7 +151,7 @@ const MyListing = () => {
                   {myListings?.map(item => (
                     <tr
                       key={item._id}
-                      className="border-b hover:bg-[#fb7a5315] hover:shadow transition-all duration-200"
+                      className="shadow-sm hover:bg-[#fb7a5315] hover:shadow transition-all duration-200"
                     >
                       <td className="py-3 px-6">
                         {item.image && (
@@ -162,18 +162,20 @@ const MyListing = () => {
                           />
                         )}
                       </td>
-                      <td className="py-3 px-6 font-medium text-gray-800">
+                      <td className="py-3 px-6 font-medium text-gray-800 dark:text-slate-200">
                         {item.name}
                       </td>
-                      <td className="py-3 px-6 text-gray-800 badge badge-ghost">
+                      <td className="py-3 px-6 text-gray-800 dark:text-slate-100 badge badge-ghost">
                         {item.category}
                       </td>
-                      <td className="py-3 px-6 text-gray-700 font-semibold ">
+                      <td className="py-3 px-6 text-gray-700 dark:text-slate-400 font-semibold ">
                         {item.price === 0 || item.price === ''
                           ? 'Free Adoption'
                           : `৳${item.price}`}
                       </td>
-                      <td className="py-3 px-6 text-gray-500">{item.date}</td>
+                      <td className="py-3 px-6 text-gray-500 dark:text-slate-400">
+                        {item.date}
+                      </td>
                       <td className="py-3 px-6 flex items-center justify-center gap-3">
                         <div
                           onClick={() => openModal(item)}
@@ -267,7 +269,7 @@ const MyListing = () => {
                   />
                 </h3>
               </div>
-              <h2 className="titleFont text-slate-950 text-2xl md:text-3xl font-bold">
+              <h2 className="titleFont text-slate-950 dark:text-slate-100 text-2xl md:text-3xl font-bold">
                 Update Your Listing
               </h2>
             </div>
@@ -280,14 +282,14 @@ const MyListing = () => {
                   placeholder="Product / Pet Name"
                   defaultValue={selectedItem.name}
                   required
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
                 />
                 <select
                   name="category"
                   value={category}
                   onChange={e => setCategory(e.target.value)}
                   required
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
                 >
                   <option disabled value="">
                     Category
@@ -302,7 +304,7 @@ const MyListing = () => {
                   name="price"
                   placeholder="Price (0 if pet)"
                   defaultValue={selectedItem.price}
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
                 />
                 <input
                   type="text"
@@ -310,7 +312,7 @@ const MyListing = () => {
                   placeholder="Location"
                   defaultValue={selectedItem.location}
                   required
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
                 />
                 <input
                   type="text"
@@ -318,21 +320,21 @@ const MyListing = () => {
                   placeholder="Image URL"
                   defaultValue={selectedItem.image}
                   required
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
                 />
                 <input
                   type="date"
                   name="date"
                   defaultValue={selectedItem.date}
                   required
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
                 />
                 <input
                   type="email"
                   name="email"
                   defaultValue={user?.email}
                   readOnly
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none cursor-not-allowed focus:outline-none"
+                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none cursor-not-allowed focus:outline-none"
                 />
               </div>
 
@@ -341,7 +343,7 @@ const MyListing = () => {
                 placeholder="Description"
                 required
                 defaultValue={selectedItem.description}
-                className="w-full mt-4 h-32 rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
+                className="w-full mt-4 h-32 rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
               ></textarea>
 
               <div className="modal-action mt-4">

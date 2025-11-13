@@ -10,7 +10,7 @@ import paw2 from '../../assets/paw2.png';
 const Home = () => {
   return (
     <div>
-      <title>Home | pawMart</title>;
+      <title>Home | pawMart</title>
       <div className="mb-20">
         <Banner></Banner>
       </div>
@@ -35,7 +35,7 @@ const Home = () => {
               />
             </h3>
           </div>
-          <h2 className="titleFont text-slate-950 text-3xl md:text-4xl text-center font-bold">
+          <h2 className="titleFont text-slate-950 dark:text-slate-100 text-3xl md:text-4xl text-center font-bold">
             Meet the Stars of Our Pet Family
           </h2>
         </div>
