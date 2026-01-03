@@ -58,6 +58,11 @@ const Navbar = () => {
         ]
       : []),
     {
+      name: 'Blogs',
+      path: '/blogs',
+      tooltip: 'Read our All blogs',
+    },
+    {
       name: 'Contact Us',
       path: '/contact',
       tooltip: 'Send us a message',

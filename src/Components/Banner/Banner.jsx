@@ -11,13 +11,14 @@ import './styles.css';
 
 import { Parallax, Pagination, Navigation, Autoplay } from 'swiper/modules';
 import { useRef } from 'react';
+import { Link } from 'react-router';
 
 function Banner() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
   return (
-    <div className="relative flex flex-col justify-center items-center w-full ">
+    <div className="relative flex flex-col justify-center items-center w-full h-9/12">
       <Swiper
         style={{
           '--swiper-navigation-color': '#fb7b53',
@@ -36,7 +37,7 @@ function Banner() {
         className="mySwiper w-full h-auto"
       >
         {/* Slide 1 */}
-        <SwiperSlide className="h-auto">
+        <SwiperSlide className="h-auto mb-6">
           <div className="flex flex-col md:flex-row h-full">
             <div className="w-full md:w-1/2 h-auto bg-[#fef0d7]">
               <img
@@ -55,16 +56,19 @@ function Banner() {
               <p className="text-xl md:text-xl lg:text-2xl text-white drop-shadow-md">
                 Join our happy owners and give a pet a loving home!
               </p>
-              <button className="mt-6 px-6 py-3 bg-[#fb7b53] text-white font-semibold rounded-lg shadow-lg hover:bg-[#e06b40] transition">
+              <Link
+                to="/pets"
+                className="mt-6 px-6 py-3 bg-[#fb7b53] text-white font-semibold rounded-lg shadow-lg hover:bg-[#e06b40] transition"
+              >
                 Adopt Now
-              </button>
+              </Link>
             </div>
           </div>
         </SwiperSlide>
 
         {/* Slide 2 */}
         <SwiperSlide className="h-auto">
-          <div className="flex flex-col md:flex-row gap-6 justify-between items-center conCls py-6 h-full">
+          <div className="flex flex-col md:flex-row gap-6 justify-between items-center conCls h-full">
             <div className="text-center md:text-left w-full md:w-1/2">
               <p className="text-orange-600 font-semibold tracking-wide uppercase mb-3">
                 Welcome to PetPath
@@ -75,14 +79,17 @@ function Banner() {
               </h1>
 
               <p className="text-gray-700 text-base md:text-lg max-w-2xl mx-auto md:mx-0 mb-8">
-                At PetPath, we provide exceptional care and services for your
+                At PetPath, we provide exceptional care and Listings for your
                 pets, including grooming, boarding, and walking. Trust us to
                 ensure your furry friends are happy.
               </p>
 
-              <button className="btn bg-orange-400 hover:bg-orange-500 text-white border-none rounded-full px-8 py-3 font-semibold shadow-md transition">
-                Our Services
-              </button>
+              <Link
+                to="/myListing"
+                className="btn bg-orange-400 hover:bg-orange-500 text-white border-none rounded-full px-8 py-3 font-semibold shadow-md transition"
+              >
+                Your Listings
+              </Link>
             </div>
             <div className="w-3/4 md:w-2/5 h-auto flex items-center">
               <img className="object-cover" src={heroImg2} alt="Hero 2" />
@@ -92,7 +99,7 @@ function Banner() {
 
         {/* Slide 3 */}
         <SwiperSlide className="h-auto">
-          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 conCls px-6 md:px-12 py-12 h-full">
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 conCls px-6 md:px-12  h-full">
             <div className="w-full md:w-1/2 flex justify-center items-center">
               <img
                 src={heroImg1}
@@ -118,12 +125,18 @@ function Banner() {
               </p>
 
               <div className="flex flex-row gap-4 justify-center md:justify-start">
-                <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 md:px-8 py-3 rounded-full shadow-md transition">
+                <Link
+                  to="/pets"
+                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 md:px-8 py-3 rounded-full shadow-md transition"
+                >
                   Explore Now
-                </button>
-                <button className="border border-orange-400 text-orange-500 hover:bg-orange-50 px-6 md:px-8 py-3 rounded-full font-semibold transition">
-                  Learn More
-                </button>
+                </Link>
+                <Link
+                  to="/contact"
+                  className="border border-orange-400 text-orange-500 hover:bg-orange-50 px-6 md:px-8 py-3 rounded-full font-semibold transition"
+                >
+                  Contact us
+                </Link>
               </div>
             </div>
           </div>

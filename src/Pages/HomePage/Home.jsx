@@ -6,6 +6,10 @@ import HerosSlider from '../../Components/HerosSlider/HerosSlider';
 import herosSectionBg from '../../assets/herosSectionBg.webp';
 import ListingSection from '../Listing/ListingSection/ListingSection';
 import paw2 from '../../assets/paw2.png';
+import FeaturesSection from '../../Components/Features/Features';
+import Highlights from '../../Components/Highlights/Highlights';
+import Testimonials from '../../Components/Testimonials/Testimonials';
+import BlogsSection from '../../Components/BlogSection/BlogSection';
 
 const Home = () => {
   return (
@@ -20,8 +24,20 @@ const Home = () => {
       <section className="my-20">
         <ListingSection></ListingSection>
       </section>
+      <section>
+        <FeaturesSection></FeaturesSection>
+      </section>
+      <section>
+        <BlogsSection></BlogsSection>
+      </section>
+      <section>
+        <Highlights></Highlights>
+      </section>
       <section className="mt-20">
         <QnaSection></QnaSection>
+      </section>
+      <section className="mt-20">
+        <Testimonials></Testimonials>
       </section>
       <section className="w-full h-full bg-cover bg-no-repeat bg-center mb-20">
         <div className="flex flex-col justify-center items-center mb-8 space-y-4 my-10">

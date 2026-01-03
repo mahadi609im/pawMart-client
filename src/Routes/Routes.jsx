@@ -14,6 +14,7 @@ import CategoryFiltered from '../Pages/CategoryFiltered/CategoryFiltered';
 import LoadingSpinner from '../Components/Loading/LoadingSpinner';
 import Contact from '../Pages/Contact/Contact';
 import ProfilePage from '../Pages/Profile/Profile';
+import Blogs from '../Pages/Blogs/Blogs';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             <AddListingsForm></AddListingsForm>
           </PrivateRoutes>
         ),
+      },
+      {
+        path: '/blogs',
+        element: <Blogs></Blogs>,
       },
       {
         path: '/contact',
