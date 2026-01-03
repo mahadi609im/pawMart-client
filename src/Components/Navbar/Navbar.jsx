@@ -1,13 +1,28 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import paw from '../../assets/paw.png';
 import { AuthContext } from '../../context/ContextProvider';
 import { toast } from 'react-toastify';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
+import { FiLogOut, FiUser } from 'react-icons/fi';
 
 const Navbar = () => {
   const { user, signOutAuthUser } = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // 🔆 Load previously selected theme from localStorage
   useEffect(() => {
@@ -42,10 +57,22 @@ const Navbar = () => {
           { name: 'My Orders', path: '/myOrders', tooltip: 'View your orders' },
         ]
       : []),
+    {
+      name: 'Contact Us',
+      path: '/contact',
+      tooltip: 'Send us a message',
+    },
   ];
 
   return (
-    <div className="navbar conCls py-4 z-50">
+    <div
+      className={`navbar  w-full transition-all duration-300 z-100 px-4 md:px-10 
+    ${
+      isScrolled
+        ? 'py-2 fixed top-0 left-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-lg border-b border-orange-100 dark:border-slate-800'
+        : 'py-5 bg-transparent'
+    }`}
+    >
       {/* ---------------- Navbar Start ---------------- */}
       <div className="navbar-start">
         {/* Mobile Dropdown */}
@@ -171,31 +198,73 @@ const Navbar = () => {
 
         {/* 👤 Auth Section */}
         {user ? (
-          <>
+          <div className="relative">
             <img
               referrerPolicy="no-referrer"
-              className="w-14 h-14 object-cover bg-[#fb7a5331] border border-dashed border-[#fb7b53] rounded-full p-1"
+              className="w-14 h-14 object-cover bg-[#fb7a5331] border border-dashed border-[#fb7b53] rounded-full p-1 cursor-pointer"
               src={
                 user?.photoURL ||
                 'https://i.ibb.co.com/bMPpw7M4/category-Icon1.webp'
               }
               alt="Profile"
+              onClick={() => setOpen(!open)} // dropdown toggle
               onError={e => {
                 e.currentTarget.src =
                   'https://i.ibb.co.com/bMPpw7M4/category-Icon1.webp';
               }}
             />
+            {open && (
+              <>
+                {/* স্ক্রিনের যেকোনো জায়গায় ক্লিক করলে ড্রপডাউন বন্ধ হওয়ার জন্য ব্যাকড্রপ */}
+                <div
+                  className="fixed inset-0 z-40"
+                  onClick={() => setOpen(false)}
+                ></div>
 
-            <button
-              onClick={handleSignOut}
-              className="bg-[#fb7b53] text-white hover:bg-orange-500 transition-all btn"
-              data-tooltip-id="tooltip-logout"
-              data-tooltip-content="Logout from your account"
-            >
-              Logout
-            </button>
+                <div className="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 overflow-hidden transform transition-all animate-in fade-in zoom-in duration-200 origin-top-right">
+                  {/* User Info Header */}
+                  <div className="px-4 py-3 bg-[#fb7a530d] border-b border-gray-100">
+                    <p className="text-sm font-semibold text-gray-900 truncate">
+                      {user?.displayName || 'User'}
+                    </p>
+                    <p className="text-xs text-gray-500 truncate">
+                      {user?.email}
+                    </p>
+                  </div>
+
+                  <ul className="py-2">
+                    <li>
+                      <Link
+                        to="/profile"
+                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-[#fb7a5315] hover:text-[#fb7b53] transition-colors"
+                        onClick={() => setOpen(false)}
+                      >
+                        <FiUser className="text-lg" />
+                        My Profile
+                      </Link>
+                    </li>
+
+                    <div className="my-1 border-t border-gray-100"></div>
+
+                    <li>
+                      <button
+                        onClick={() => {
+                          handleSignOut();
+                          setOpen(false);
+                        }}
+                        className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 transition-colors font-medium"
+                      >
+                        <FiLogOut className="text-lg" />
+                        Sign Out
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </>
+            )}
+
             <Tooltip id="tooltip-logout" place="bottom" effect="solid" />
-          </>
+          </div>
         ) : (
           <>
             <Link

@@ -12,6 +12,8 @@ import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 import PrivateRoutes from '../Components/Private/PrivateRoutes';
 import CategoryFiltered from '../Pages/CategoryFiltered/CategoryFiltered';
 import LoadingSpinner from '../Components/Loading/LoadingSpinner';
+import Contact from '../Pages/Contact/Contact';
+import ProfilePage from '../Pages/Profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,10 @@ const router = createBrowserRouter([
             <AddListingsForm></AddListingsForm>
           </PrivateRoutes>
         ),
+      },
+      {
+        path: '/contact',
+        element: <Contact></Contact>,
       },
       {
         path: '/myListing',
@@ -66,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         Component: Login,
+      },
+      {
+        path: '/profile',
+        Component: ProfilePage,
       },
       {
         path: '/register',

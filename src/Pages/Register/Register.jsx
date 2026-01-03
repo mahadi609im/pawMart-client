@@ -110,7 +110,6 @@ const Register = () => {
         }
 
         toast.error(message);
-        console.log(message);
       });
   };
 

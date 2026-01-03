@@ -9,11 +9,13 @@ const ListingCard = ({ item }) => {
     <div className="details bg-white dark:bg-transparent shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-dashed hover:border-[#fb7b53]">
       {/* Image Section */}
       <div className="relative">
-        <img
-          src={item.image}
-          alt={item.name}
-          className="w-full h-72 object-cover"
-        />
+        <div className="w-full h-72">
+          <img
+            src={item.image}
+            alt={item.name}
+            className="w-full h-full object-cover"
+          />
+        </div>
 
         {/* Category Tag */}
         <div className="absolute top-3 left-3">
