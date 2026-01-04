@@ -1,17 +1,22 @@
 import React, { useContext, useState } from 'react';
-import listingsFormBg from '../../assets/listingsFormBg.webp';
-import paw from '../../assets/paw.png';
-import paw2 from '../../assets/paw2.png';
 import { AuthContext } from '../../context/ContextProvider';
-import { toast } from 'react-toastify';
+import {
+  HiOutlineCloudUpload,
+  HiOutlineClipboardList,
+  HiOutlineLocationMarker,
+  HiOutlineCurrencyDollar,
+} from 'react-icons/hi';
+import paw2 from '../../assets/paw2.png';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
 const AddListingsForm = () => {
   const { user } = useContext(AuthContext);
   const [category, setCategory] = useState('');
+  const navigate = useNavigate();
 
   const handleAddListings = e => {
     e.preventDefault();
-
     const form = e.target;
     const name = form.name.value;
     const price = form.price.value;
@@ -30,170 +35,233 @@ const AddListingsForm = () => {
       date,
       email,
       description,
+      addedBy: user?.displayName,
+      userPhoto: user?.photoURL,
     };
-
-    console.log(newListing);
 
     fetch('https://paw-mart-server-smoky.vercel.app/listings', {
       method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
+      headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newListing),
     })
       .then(res => res.json())
       .then(data => {
         if (data.insertedId) {
-          e.target.reset();
-          setCategory(''); // reset category state
-          toast.success('New Listings Added Successfully');
+          // SweetAlert 2 Popup
+          Swal.fire({
+            title: 'Success!',
+            text: 'Your new listing has been published.',
+            icon: 'success',
+            confirmButtonColor: '#fb7b53', // থিমের সাথে মিল রেখে
+            confirmButtonText: 'Great!',
+            background:
+              document.documentElement.getAttribute('data-theme') === 'night'
+                ? '#1e293b'
+                : '#fff',
+            color:
+              document.documentElement.getAttribute('data-theme') === 'night'
+                ? '#fff'
+                : '#000',
+          }).then(result => {
+            if (result.isConfirmed) {
+              form.reset();
+              setCategory('');
+              // সাকসেস হওয়ার পর রিডাইরেক্ট (আপনার পাথ অনুযায়ী পরিবর্তন করুন)
+              navigate('/dashboard/myListing');
+            }
+          });
         }
+      })
+      .catch(() => {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Something went wrong. Please try again.',
+          icon: 'error',
+          confirmButtonColor: '#fb7b53',
+        });
       });
   };
 
+  const inputStyle =
+    'w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 focus:border-[#fb7b53] focus:ring-2 focus:ring-[#fb7b53]/20 outline-none transition-all duration-300 text-slate-700 dark:text-slate-200 placeholder:text-slate-400';
+
   return (
-    <div className="relative min-h-screen py-20 mt-12">
+    <div className="max-w-5xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
       <title>Add Listings | pawMart</title>
-      <div className="conCls flex flex-col lg:flex-row items-center justify-center">
-        {/* Left Side Image */}
-        <div className="md:w-1/2 w-full flex justify-center relative">
-          <div className="relative">
-            <img
-              src={
-                'https://softivuspro.com//wp//petpath/wp-content/uploads/2024/11/about-section-banner.png'
-              }
-              alt="Pet Banner"
-              className="md:h-[500px] h-[300px] object-cover rounded-lg"
-            />
-          </div>
-        </div>
 
-        {/* Right Side Form */}
-        <div className="lg:w-1/2 w-full md:mt-0 bg-white rounded-xl shadow-lg p-8 relative">
-          <div className="flex flex-col mb-8 space-y-4">
-            <div className="flex">
-              <h3 className="text-base font-bold text-[#fb7b53] items-center gap-2 relative inline-block">
-                Add Listings
-                <img
-                  className="w-6 h-6 absolute -top-3 -right-5"
-                  src={paw2}
-                  alt=""
-                />
-              </h3>
+      <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none overflow-hidden">
+        <div className="flex flex-col lg:flex-row">
+          {/* Left Side: Visual Info */}
+          <div className="lg:w-2/5 bg-[#fb7a530a] dark:bg-slate-800/30 p-8 lg:p-12 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-slate-800">
+            <div className="relative inline-block w-fit">
+              <span className="text-[#fb7b53] font-black uppercase tracking-[0.3em] text-[10px] bg-[#fb7a5315] px-3 py-1 rounded-full">
+                Inventory
+              </span>
+              <img
+                src={paw2}
+                alt=""
+                className="w-6 h-6 absolute -top-4 -right-6 animate-bounce"
+              />
             </div>
-            <h2 className="titleFont text-slate-950 text-3xl md:text-4xl font-bold">
-              Add Your Pet or Product
+            <h2 className="text-3xl lg:text-4xl font-black text-slate-800 dark:text-white mt-4 leading-tight">
+              List Your <span className="text-[#fb7b53]">Pet</span> or Products
             </h2>
+            <p className="text-slate-500 dark:text-slate-400 mt-4 text-sm leading-relaxed">
+              Fill in the details to showcase your pets or products to thousands
+              of potential owners and customers.
+            </p>
+
+            <div className="mt-8 space-y-4">
+              <div className="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+                <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-800 shadow-sm flex items-center justify-center text-[#fb7b53]">
+                  <HiOutlineCloudUpload />
+                </div>
+                <span className="text-xs font-bold">Fast Upload to Server</span>
+              </div>
+              <div className="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+                <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-800 shadow-sm flex items-center justify-center text-[#fb7b53]">
+                  <HiOutlineLocationMarker />
+                </div>
+                <span className="text-xs font-bold">
+                  Location-based reaching
+                </span>
+              </div>
+            </div>
           </div>
 
-          <form onSubmit={handleAddListings}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Product / Pet Name */}
-              <input
-                type="text"
-                name="name"
-                required
-                placeholder="Product / Pet Name"
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
-                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-                onBlur={e => (e.target.style.outline = 'none')}
-              />
+          {/* Right Side: Form */}
+          <div className="lg:w-3/5 p-8 lg:p-12 bg-white dark:bg-slate-900">
+            <form onSubmit={handleAddListings} className="space-y-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {/* Name */}
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">
+                    Item Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="Ex: Golden Retriever"
+                    className={inputStyle}
+                  />
+                </div>
 
-              {/* Category */}
-              <select
-                name="category"
-                required
-                value={category}
-                onChange={e => setCategory(e.target.value)}
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
-                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-                onBlur={e => (e.target.style.outline = 'none')}
-              >
-                <option disabled value="">
-                  Category
-                </option>
-                <option>Pets</option>
-                <option>Food</option>
-                <option>Accessories</option>
-                <option>Care Products</option>
-              </select>
+                {/* Category */}
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">
+                    Category
+                  </label>
+                  <select
+                    name="category"
+                    required
+                    value={category}
+                    onChange={e => setCategory(e.target.value)}
+                    className={inputStyle}
+                  >
+                    <option disabled value="">
+                      Select Category
+                    </option>
+                    <option>Pets</option>
+                    <option>Food</option>
+                    <option>Accessories</option>
+                    <option>Care Products</option>
+                  </select>
+                </div>
 
-              {/* Price */}
-              <input
-                type="number"
-                name="price"
-                required={category !== 'Pets'}
-                placeholder="Price (0 if pet)"
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
-                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-                onBlur={e => (e.target.style.outline = 'none')}
-              />
+                {/* Price */}
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">
+                    Price (0 if pet)
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      name="price"
+                      required={category !== 'Pets'}
+                      placeholder="0.00"
+                      className={inputStyle}
+                    />
+                    <HiOutlineCurrencyDollar className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl" />
+                  </div>
+                </div>
 
-              {/* Location */}
-              <input
-                type="text"
-                name="location"
-                required
-                placeholder="Location"
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
-                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-                onBlur={e => (e.target.style.outline = 'none')}
-              />
+                {/* Location */}
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">
+                    Location
+                  </label>
+                  <input
+                    type="text"
+                    name="location"
+                    required
+                    placeholder="City, Country"
+                    className={inputStyle}
+                  />
+                </div>
 
-              {/* Image URL */}
-              <input
-                type="text"
-                name="image"
-                required
-                placeholder="Image URL"
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
-                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-                onBlur={e => (e.target.style.outline = 'none')}
-              />
+                {/* Image URL */}
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">
+                    Image URL
+                  </label>
+                  <input
+                    type="text"
+                    name="image"
+                    required
+                    placeholder="https://image.path"
+                    className={inputStyle}
+                  />
+                </div>
 
-              {/* Pick Up Date */}
-              <input
-                type="date"
-                name="date"
-                required
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
-                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-                onBlur={e => (e.target.style.outline = 'none')}
-              />
+                {/* Date */}
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">
+                    Listing Date
+                  </label>
+                  <input
+                    type="date"
+                    name="date"
+                    required
+                    className={inputStyle}
+                  />
+                </div>
+              </div>
 
-              {/* Email (readonly) */}
-              <input
-                type="email"
-                name="email"
-                defaultValue={user?.email}
-                readOnly
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none cursor-not-allowed focus:outline-none"
-                onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-                onBlur={e => (e.target.style.outline = 'none')}
-              />
-            </div>
+              {/* Email (Read Only) */}
+              <div className="space-y-2">
+                <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">
+                  Owner Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  defaultValue={user?.email}
+                  readOnly
+                  className={`${inputStyle} bg-slate-100 dark:bg-slate-800 cursor-not-allowed opacity-70`}
+                />
+              </div>
 
-            {/* Description */}
-            <textarea
-              name="description"
-              placeholder="Description"
-              required
-              className="w-full mt-4 h-32 rounded-lg p-2 bg-[#fb7a5331] text-slate-950 border-none focus:outline-none"
-              onFocus={e => (e.target.style.outline = '1px dashed #fb7b53')}
-              onBlur={e => (e.target.style.outline = 'none')}
-            ></textarea>
+              {/* Description */}
+              <div className="space-y-2">
+                <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">
+                  Detailed Description
+                </label>
+                <textarea
+                  name="description"
+                  required
+                  placeholder="Write details about the pet/product..."
+                  className={`${inputStyle} h-32 resize-none`}
+                ></textarea>
+              </div>
 
-            <button className="bg-orange-400 text-white px-6 py-2 rounded-lg mt-4 hover:bg-orange-500 transition">
-              Add Pet/Product
-            </button>
-          </form>
-
-          {/* Paw Decoration */}
-          <img
-            src={paw}
-            alt=""
-            className="w-8 h-8 absolute bottom-4 right-4 opacity-40"
-          />
+              {/* Submit Button */}
+              <button className="w-full bg-[#fb7b53] hover:bg-[#e06a46] text-white font-black py-4 rounded-2xl shadow-lg shadow-[#fb7b53]/30 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group">
+                <HiOutlineClipboardList className="text-xl group-hover:rotate-12 transition-transform" />
+                Add to Listings
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

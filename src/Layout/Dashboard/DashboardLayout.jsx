@@ -14,12 +14,12 @@ import {
 import paw from '../../assets/paw.png';
 
 const DashboardLayout = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, signOutAuthUser } = useContext(AuthContext);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logOut().then(() => navigate('/'));
+    signOutAuthUser().then(() => navigate('/'));
   };
 
   // Sidebar Menu Items
@@ -55,12 +55,12 @@ const DashboardLayout = () => {
         }`}
       >
         <div className="flex flex-col h-full">
-          <div className="p-8 flex items-center gap-3">
+          <Link to="/" className="p-8 flex items-center gap-3">
             <img src={paw} alt="logo" className="w-8 h-8" />
             <span className="text-xl font-black tracking-tighter text-slate-800 dark:text-white">
               PAW<span className="text-[#fb7b53]">MART</span>
             </span>
-          </div>
+          </Link>
 
           <nav className="flex-1 px-6 space-y-2 mt-4">
             {menuItems.map(item => (
@@ -85,7 +85,7 @@ const DashboardLayout = () => {
           <div className="p-6 border-t border-slate-50 dark:border-slate-800">
             <button
               onClick={handleLogout}
-              className="flex items-center gap-4 px-4 py-3.5 w-full text-red-400 font-bold text-sm hover:bg-red-50 dark:hover:bg-red-500/10 rounded-2xl transition-all"
+              className="flex items-center gap-4 px-4 py-3.5 w-full text-red-400 font-bold text-sm hover:bg-red-50 dark:hover:bg-red-500/10 rounded-2xl transition-all cursor-pointer"
             >
               <HiOutlineLogout size={20} />
               Logout

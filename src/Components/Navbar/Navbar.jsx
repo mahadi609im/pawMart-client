@@ -49,25 +49,6 @@ const Navbar = () => {
       path: '/pets',
       tooltip: 'Browse pets and products',
     },
-    ...(user
-      ? [
-          {
-            name: 'Add Listing',
-            path: '/dashboard/addListing',
-            tooltip: 'Add a new listing',
-          },
-          {
-            name: 'My Listing',
-            path: '/dashboard/myListing',
-            tooltip: 'View your listings',
-          },
-          {
-            name: 'My Orders',
-            path: '/dashboard/myOrders',
-            tooltip: 'View your orders',
-          },
-        ]
-      : []),
     {
       name: 'Blogs',
       path: '/blogs',
