@@ -19,7 +19,11 @@ const AddListingsForm = () => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
-    const price = form.price.value;
+
+    // Price logic: খালি থাকলে ০ (Number), না থাকলে Parse করে Number এ রূপান্তর
+    const rawPrice = form.price.value;
+    const price = rawPrice === '' ? 0 : Number(rawPrice);
+
     const location = form.location.value;
     const image = form.image.value;
     const date = form.date.value;
@@ -28,7 +32,7 @@ const AddListingsForm = () => {
 
     const newListing = {
       name,
-      category,
+      category, // useState থেকে সরাসরি ভ্যালু যাবে
       price,
       location,
       image,
@@ -47,12 +51,11 @@ const AddListingsForm = () => {
       .then(res => res.json())
       .then(data => {
         if (data.insertedId) {
-          // SweetAlert 2 Popup
           Swal.fire({
             title: 'Success!',
             text: 'Your new listing has been published.',
             icon: 'success',
-            confirmButtonColor: '#fb7b53', // থিমের সাথে মিল রেখে
+            confirmButtonColor: '#fb7b53',
             confirmButtonText: 'Great!',
             background:
               document.documentElement.getAttribute('data-theme') === 'night'
@@ -66,7 +69,6 @@ const AddListingsForm = () => {
             if (result.isConfirmed) {
               form.reset();
               setCategory('');
-              // সাকসেস হওয়ার পর রিডাইরেক্ট (আপনার পাথ অনুযায়ী পরিবর্তন করুন)
               navigate('/dashboard/myListing');
             }
           });
@@ -162,10 +164,10 @@ const AddListingsForm = () => {
                     <option disabled value="">
                       Select Category
                     </option>
-                    <option>Pets</option>
-                    <option>Food</option>
-                    <option>Accessories</option>
-                    <option>Care Products</option>
+                    <option value="Pets (Adoption)">Pets (Adoption)</option>
+                    <option value="Pet Food">Pet Food</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Pet Care Products">Pet Care Products</option>
                   </select>
                 </div>
 
@@ -178,7 +180,6 @@ const AddListingsForm = () => {
                     <input
                       type="number"
                       name="price"
-                      required={category !== 'Pets'}
                       placeholder="0.00"
                       className={inputStyle}
                     />
