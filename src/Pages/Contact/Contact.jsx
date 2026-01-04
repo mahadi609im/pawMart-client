@@ -149,7 +149,7 @@ const Contact = () => {
             <img
               src={paw}
               alt=""
-              className="w-12 h-12 absolute bottom-6 right-6 opacity-10 pointer-events-none rotate-12"
+              className="w-12 h-12 absolute bottom-6 right-6 opacity-30 pointer-events-none rotate-12"
             />
           </div>
         </div>

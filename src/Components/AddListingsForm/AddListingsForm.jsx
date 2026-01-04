@@ -52,11 +52,8 @@ const AddListingsForm = () => {
   };
 
   return (
-    <div
-      className="relative min-h-screen py-20 mt-12"
-      style={{ backgroundImage: `url(${listingsFormBg})` }}
-    >
-      <title>Add Listings | pawMart</title>;
+    <div className="relative min-h-screen py-20 mt-12">
+      <title>Add Listings | pawMart</title>
       <div className="conCls flex flex-col lg:flex-row items-center justify-center">
         {/* Left Side Image */}
         <div className="md:w-1/2 w-full flex justify-center relative">

@@ -15,6 +15,8 @@ import LoadingSpinner from '../Components/Loading/LoadingSpinner';
 import Contact from '../Pages/Contact/Contact';
 import ProfilePage from '../Pages/Profile/Profile';
 import Blogs from '../Pages/Blogs/Blogs';
+import DashboardLayout from '../Layout/Dashboard/DashboardLayout';
+import DashboardHome from '../Pages/DashboardHome/DashboardHome';
 
 const router = createBrowserRouter([
   {
@@ -30,14 +32,7 @@ const router = createBrowserRouter([
         path: '/pets',
         Component: PetSupplies,
       },
-      {
-        path: '/addListing',
-        element: (
-          <PrivateRoutes>
-            <AddListingsForm></AddListingsForm>
-          </PrivateRoutes>
-        ),
-      },
+
       {
         path: '/blogs',
         element: <Blogs></Blogs>,
@@ -46,33 +41,14 @@ const router = createBrowserRouter([
         path: '/contact',
         element: <Contact></Contact>,
       },
-      {
-        path: '/myListing',
-        element: (
-          <PrivateRoutes>
-            <MyListing></MyListing>
-          </PrivateRoutes>
-        ),
-      },
-      {
-        path: '/myOrders',
-        element: (
-          <PrivateRoutes>
-            <MyOrders></MyOrders>
-          </PrivateRoutes>
-        ),
-      },
+
       {
         path: '/listingsDetails/:id',
         loader: ({ params }) =>
           fetch(
             `https://paw-mart-server-smoky.vercel.app/listings/${params.id}`
           ),
-        element: (
-          <PrivateRoutes>
-            <ListingsDetails></ListingsDetails>
-          </PrivateRoutes>
-        ),
+        element: <ListingsDetails></ListingsDetails>,
       },
       {
         path: '/login',
@@ -80,7 +56,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        Component: ProfilePage,
+        element: (
+          <PrivateRoutes>
+            <ProfilePage></ProfilePage>
+          </PrivateRoutes>
+        ),
       },
       {
         path: '/register',
@@ -90,6 +70,20 @@ const router = createBrowserRouter([
         path: '/category-filtered-product/:categoryName',
         element: <CategoryFiltered></CategoryFiltered>,
       },
+    ],
+  },
+  {
+    path: '/dashboard',
+    element: (
+      <PrivateRoutes>
+        <DashboardLayout />
+      </PrivateRoutes>
+    ),
+    children: [
+      { index: true, element: <DashboardHome /> },
+      { path: 'addListing', element: <AddListingsForm /> },
+      { path: 'myListing', element: <MyListing /> },
+      { path: 'myOrders', element: <MyOrders /> },
     ],
   },
   {

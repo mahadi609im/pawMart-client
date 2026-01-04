@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/ContextProvider';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
+import Swal from 'sweetalert2';
 
 const Register = () => {
   const {
@@ -74,14 +75,21 @@ const Register = () => {
         })
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photo });
-
-            toast.success('Registration successful!');
+            Swal.fire({
+              title: 'Registration successfully',
+              icon: 'success',
+              draggable: true,
+            });
             e.target.reset();
             navigate('/');
           })
-          .catch(error => {
-            console.error('Profile update error:', error);
-            toast.error('Profile update failed.');
+          .catch(() => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: `Profile update failed.`,
+              footer: '<a href="#">Why do I have this issue?</a>',
+            });
           });
       })
       .catch(err => {
@@ -109,7 +117,12 @@ const Register = () => {
           message = 'Something went wrong.';
         }
 
-        toast.error(message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${message}`,
+          footer: '<a href="#">Why do I have this issue?</a>',
+        });
       });
   };
 

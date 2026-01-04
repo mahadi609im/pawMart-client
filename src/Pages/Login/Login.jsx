@@ -5,10 +5,10 @@ import { FcGoogle } from 'react-icons/fc';
 import paw2 from '../../assets/paw2.png';
 import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
-import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/ContextProvider';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const { signInAuthUser, isLoading, setUser, googleLogin } =
@@ -41,7 +41,11 @@ const Login = () => {
       .then(result => {
         e.target.reset();
         setUser(result.user);
-        toast.success('Login successfully');
+        Swal.fire({
+          title: 'Login successfully',
+          icon: 'success',
+          draggable: true,
+        });
         navigate(location.state ? location.state : '/');
       })
       .catch(err => {
@@ -62,7 +66,12 @@ const Login = () => {
         } else {
           message = 'Something went wrong. Please try again.';
         }
-        toast.error(message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${message}`,
+          footer: '<a href="#">Why do I have this issue?</a>',
+        });
       });
   };
 
@@ -70,10 +79,21 @@ const Login = () => {
     googleLogin()
       .then(result => {
         setUser(result.user);
-        toast.success('SignIn Successfully');
+        Swal.fire({
+          title: 'Signed In successfully',
+          icon: 'success',
+          draggable: true,
+        });
         navigate('/');
       })
-      .catch(error => toast.error(error.message));
+      .catch(error => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.message}`,
+          footer: '<a href="#">Why do I have this issue?</a>',
+        });
+      });
   };
 
   return (

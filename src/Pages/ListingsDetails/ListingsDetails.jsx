@@ -5,6 +5,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { AuthContext } from '../../context/ContextProvider';
 import paw2 from '../../assets/paw2.png';
 import { toast } from 'react-toastify';
+import { HiBookmark, HiLocationMarker, HiMail } from 'react-icons/hi';
 
 const ListingsDetails = () => {
   const { user } = useContext(AuthContext);
@@ -65,171 +66,234 @@ const ListingsDetails = () => {
       </div>
 
       <div className="bg-white dark:bg-transparent rounded-2xl shadow-lg max-w-5xl w-full flex flex-col lg:flex-row overflow-hidden border border-dashed border-[#fb7b53]">
-        {/* Left Image Section */}
-        <div className="lg:w-1/2 w-full flex justify-center items-center bg-[#fb7a5331] p-6">
-          <img
-            src={image}
-            alt={name}
-            className="rounded-lg w-full h-auto object-cover"
-          />
+        {/* Left Image Section - Modern UI Update */}
+        <div className="lg:w-1/2 w-full p-4 md:p-8 bg-[#fb7a5320]">
+          <div className="relative h-full min-h-[350px] md:min-h-[450px] overflow-hidden rounded-[2rem] shadow-2xl group">
+            {/* Product Image */}
+            <img
+              src={image}
+              alt={name}
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+            />
+
+            {/* Gradient Overlay for Depth */}
+            <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-60"></div>
+
+            {/* Floating Category Tag */}
+            <div className="absolute top-5 left-5">
+              <span className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-slate-900 dark:text-white text-[10px] font-black px-4 py-2 rounded-2xl uppercase tracking-[0.2em] shadow-lg">
+                {category}
+              </span>
+            </div>
+          </div>
         </div>
 
-        {/* Right Details Section */}
-        <div className="lg:w-1/2 w-full p-8 flex flex-col justify-center relative">
-          {/* Header */}
-          <div className="mb-6">
-            <h3 className="text-[#fb7b53] font-bold text-sm relative inline-block ml-6">
-              <img
-                src={paw}
-                alt=""
-                className="w-5 h-5 absolute -left-6 top-0"
-              />
-              Pet Details
-            </h3>
-            <h2 className="text-3xl font-bold text-slate-950 dark:text-slate-50 mt-2">
-              {name}
-            </h2>
-          </div>
-
-          {/* Info Grid */}
-          <div className="flex flex-col md:flex-row gap-8 text-slate-800 dark:text-slate-300 text-base">
+        {/* Right: Details Section */}
+        <div className="lg:w-1/2 p-8 md:p-14 flex flex-col justify-center relative overflow-hidden">
+          <div className="space-y-6 relative z-10">
+            {/* Header */}
             <div>
-              <p>
-                <span className="font-semibold text-[#fb7b53]">Category:</span>{' '}
-                {category}
-              </p>
-              <p>
-                <span className="font-semibold text-[#fb7b53]">
-                  Owner Email:
-                </span>{' '}
-                {email}
+              <div className="flex items-center gap-2 mb-3">
+                <img src={paw} alt="paw" className="w-5 h-5 opacity-80" />
+                <span className="text-[#fb7b53] text-[10px] font-black uppercase tracking-[0.3em]">
+                  Details
+                </span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight tracking-tighter">
+                {name}
+              </h1>
+            </div>
+
+            {/* Info Grid (Professional Cards) */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-[1.5rem] border border-slate-100 dark:border-slate-800">
+                <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">
+                  Price
+                </p>
+                <p
+                  className={`text-lg font-black ${
+                    price === 0 ? 'text-emerald-500' : 'text-[#fb7b53]'
+                  }`}
+                >
+                  {price === 0 ? 'Free Adoption' : `৳${price}`}
+                </p>
+              </div>
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-[1.5rem] border border-slate-100 dark:border-slate-800">
+                <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">
+                  Location
+                </p>
+                <div className="flex items-center gap-1 text-slate-800 dark:text-slate-200">
+                  <HiLocationMarker className="text-[#fb7b53]" />
+                  <p className="text-sm font-bold">{location}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Owner Details */}
+            <div className="flex items-center gap-3 py-4 border-y border-slate-50 dark:border-slate-800">
+              <div className="w-10 h-10 rounded-full bg-[#fb7b53]/10 flex items-center justify-center text-[#fb7b53]">
+                <HiMail size={20} />
+              </div>
+              <div>
+                <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">
+                  Contact Owner
+                </p>
+                <p className="text-sm font-bold text-slate-700 dark:text-slate-300">
+                  {email}
+                </p>
+              </div>
+            </div>
+
+            {/* Description */}
+            <div>
+              <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                <HiBookmark /> Story & Description
+              </h4>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                {description}
               </p>
             </div>
-            <div>
-              <p>
-                <span className="font-semibold text-[#fb7b53]">Price:</span>{' '}
-                {price === 0 ? 'Free Adoption' : `৳${price}`}
-              </p>
-              <p>
-                <span className="font-semibold text-[#fb7b53]">Location:</span>{' '}
-                {location}
-              </p>
+
+            {/* Action Button */}
+            <div className="pt-6 flex flex-col sm:flex-row items-center gap-4">
+              <button
+                disabled={!user}
+                onClick={() => setModalOpen(true)}
+                className="w-full sm:w-auto bg-[#fb7b53] hover:bg-[#e06a44] disabled:bg-slate-200 dark:disabled:bg-slate-800 disabled:text-slate-400 text-white font-black uppercase tracking-widest text-[11px] px-10 py-5 rounded-2xl shadow-xl shadow-[#fb7b53]/20 transition-all active:scale-95"
+              >
+                {user ? 'Adopt / Order Now' : 'Login to Order'}
+              </button>
+
+              {!user && (
+                <p className="text-[10px] font-bold text-red-400 uppercase tracking-tighter italic">
+                  * Authentication required
+                </p>
+              )}
             </div>
           </div>
 
-          {/* Description */}
-          <div className="mt-6 text-base">
-            <h4 className="font-semibold text-[#fb7b53] mb-2">Description</h4>
-            <p className="text-gray-700 dark:text-slate-500 leading-relaxed">
-              {description}
-            </p>
-          </div>
-
-          {/* Order Now Button */}
-          <button
-            className="mt-8 bg-[#fb7b53] hover:bg-orange-500 text-white font-medium px-6 py-3 rounded-lg transition-all w-fit"
-            onClick={() => setModalOpen(true)}
-          >
-            Order Now
-          </button>
-
-          {/* Paw Decoration */}
+          {/* 🐾 Paw Decoration - Bottom Right Corner */}
           <img
             src={paw}
             alt=""
-            className="w-8 h-8 absolute bottom-4 right-4 opacity-40"
+            className="w-12 h-12 absolute bottom-6 right-6 opacity-30 pointer-events-none rotate-12"
           />
         </div>
       </div>
 
       {/* Order Modal */}
       {modalOpen && (
-        <dialog open className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box">
-            <div className="flex flex-col mb-8 space-y-4">
+        <dialog
+          open
+          className="modal modal-bottom sm:modal-middle backdrop-blur-sm"
+        >
+          <div className="modal-box bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl rounded-[2rem] p-8">
+            {/* Header Section */}
+            <div className="flex flex-col mb-6 space-y-2">
               <div className="flex">
-                <h3 className="text-base font-bold text-[#fb7b53] items-center gap-2 relative inline-block">
-                  Order Now
-                  <img
-                    className="w-6 h-6 absolute -top-3 -right-5"
-                    src={paw2}
-                    alt=""
-                  />
-                </h3>
+                <div className="relative inline-block group">
+                  <h3 className="relative z-10 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-[#fb7b53]/10 text-[#fb7b53] border border-[#fb7b53]/20">
+                    Order Now
+                    <img
+                      className="w-5 h-5 absolute -top-3 -right-4 animate-bounce"
+                      src={paw2}
+                      alt="paw"
+                    />
+                  </h3>
+                </div>
               </div>
-              <h2 className="titleFont text-slate-950 dark:text-slate-100 text-2xl md:text-3xl font-bold">
-                Place Your Order
+              <h2 className="titleFont text-slate-900 dark:text-white text-2xl md:text-3xl font-black">
+                Place Your <span className="text-[#fb7b53]">Order</span>
               </h2>
             </div>
+
+            {/* Form Section */}
             <form
               onSubmit={handleOrderSubmit}
               className="grid grid-cols-1 gap-4"
             >
-              <input
-                type="text"
-                name="buyerName"
-                defaultValue={user?.displayName}
-                readOnly
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none cursor-not-allowed"
-              />
-              <input
-                type="email"
-                name="email"
-                defaultValue={user?.email}
-                readOnly
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none cursor-not-allowed"
-              />
+              {/* Readonly Inputs - Subtle Style */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  name="buyerName"
+                  defaultValue={user?.displayName}
+                  readOnly
+                  className="rounded-xl p-3 bg-slate-100 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 border border-transparent text-sm font-bold cursor-not-allowed outline-none"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  defaultValue={user?.email}
+                  readOnly
+                  className="rounded-xl p-3 bg-slate-100 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 border border-transparent text-sm font-bold cursor-not-allowed outline-none"
+                />
+              </div>
+
               <input
                 type="text"
                 name="listingName"
                 defaultValue={name}
                 readOnly
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none cursor-not-allowed"
+                className="rounded-xl p-3 bg-slate-100 dark:bg-slate-800/50 text-[#fb7b53] border border-transparent text-sm font-black outline-none cursor-not-allowed"
               />
-              {category !== 'Pets' && (
+
+              {/* Interactive Inputs */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {category !== 'Pets' && (
+                  <input
+                    type="number"
+                    name="quantity"
+                    placeholder="Quantity"
+                    className="rounded-xl p-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 focus:border-[#fb7b53] focus:ring-1 focus:ring-[#fb7b53] outline-none transition-all"
+                    required
+                  />
+                )}
                 <input
-                  type="number"
-                  name="quantity"
-                  placeholder="Quantity"
-                  className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
+                  type="date"
+                  name="date"
+                  className="rounded-xl p-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 focus:border-[#fb7b53] outline-none transition-all"
                   required
                 />
-              )}
+              </div>
+
               <input
                 type="text"
                 name="address"
-                placeholder="Address"
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
+                placeholder="Delivery Address"
+                className="rounded-xl p-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 focus:border-[#fb7b53] outline-none transition-all"
                 required
               />
-              <input
-                type="date"
-                name="date"
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
-                required
-              />
+
               <input
                 type="tel"
                 name="phone"
-                placeholder="Phone"
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
+                placeholder="Phone Number"
+                className="rounded-xl p-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 focus:border-[#fb7b53] outline-none transition-all"
                 required
               />
+
               <textarea
                 name="notes"
-                placeholder="Additional Notes"
-                className="rounded-lg p-2 bg-[#fb7a5331] text-slate-950 dark:text-slate-100 border-none focus:outline-none"
+                rows="3"
+                placeholder="Additional Notes (Optional)"
+                className="rounded-xl p-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 focus:border-[#fb7b53] outline-none transition-all resize-none"
               ></textarea>
-              <div className="modal-action mt-2 flex justify-end items-center gap-2">
+
+              {/* Actions */}
+              <div className="modal-action mt-4 flex justify-end items-center gap-3">
                 <button
                   type="button"
-                  className="btn"
+                  className="px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
                   onClick={() => setModalOpen(false)}
                 >
-                  Close
+                  Cancel
                 </button>
-                <button className="bg-orange-400 text-white btn rounded-lg hover:bg-orange-500 transition">
-                  Submit Order
+                <button
+                  type="submit"
+                  className="px-8 py-3 bg-[#fb7b53] text-white rounded-xl font-black text-xs uppercase tracking-widest hover:bg-[#e06a44] shadow-lg shadow-[#fb7b53]/20 active:scale-95 transition-all"
+                >
+                  Confirm Order
                 </button>
               </div>
             </form>

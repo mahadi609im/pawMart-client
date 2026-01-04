@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import paw from '../../assets/paw.png';
 import { AuthContext } from '../../context/ContextProvider';
-import { toast } from 'react-toastify';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import { FiLogOut, FiUser } from 'react-icons/fi';
+import Swal from 'sweetalert2';
+import { LuLayoutDashboard } from 'react-icons/lu';
+import { FaRegUser } from 'react-icons/fa';
 
 const Navbar = () => {
   const { user, signOutAuthUser } = useContext(AuthContext);
@@ -32,7 +34,12 @@ const Navbar = () => {
 
   const handleSignOut = () => {
     signOutAuthUser();
-    toast.success('Logout Successfully');
+
+    Swal.fire({
+      title: 'Signed Out successfully',
+      icon: 'success',
+      draggable: true,
+    });
   };
 
   const links = [
@@ -46,15 +53,19 @@ const Navbar = () => {
       ? [
           {
             name: 'Add Listing',
-            path: '/addListing',
+            path: '/dashboard/addListing',
             tooltip: 'Add a new listing',
           },
           {
             name: 'My Listing',
-            path: '/myListing',
+            path: '/dashboard/myListing',
             tooltip: 'View your listings',
           },
-          { name: 'My Orders', path: '/myOrders', tooltip: 'View your orders' },
+          {
+            name: 'My Orders',
+            path: '/dashboard/myOrders',
+            tooltip: 'View your orders',
+          },
         ]
       : []),
     {
@@ -220,7 +231,6 @@ const Navbar = () => {
             />
             {open && (
               <>
-                {/* স্ক্রিনের যেকোনো জায়গায় ক্লিক করলে ড্রপডাউন বন্ধ হওয়ার জন্য ব্যাকড্রপ */}
                 <div
                   className="fixed inset-0 z-40"
                   onClick={() => setOpen(false)}
@@ -241,11 +251,32 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/profile"
-                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-[#fb7a5315] hover:text-[#fb7b53] transition-colors"
+                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-[#fb7a5315] hover:text-[#fb7b53] dark:hover:bg-[#fb7b5310] dark:hover:text-[#fb7b53] transition-all duration-300 group"
                         onClick={() => setOpen(false)}
                       >
-                        <FiUser className="text-lg" />
-                        My Profile
+                        {/* Dashboard Icon with hover animation */}
+                        <FaRegUser className="text-lg transition-transform duration-300 group-hover:scale-110" />
+                        <span className="font-medium">My Profile</span>
+
+                        {/* Subtle Indicator (Optional) */}
+                        <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#fb7b53] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                      </Link>
+                    </li>
+
+                    <div className="my-1 border-t border-gray-100"></div>
+
+                    <li>
+                      <Link
+                        to="/dashboard"
+                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-[#fb7a5315] hover:text-[#fb7b53] dark:hover:bg-[#fb7b5310] dark:hover:text-[#fb7b53] transition-all duration-300 group"
+                        onClick={() => setOpen(false)}
+                      >
+                        {/* Dashboard Icon with hover animation */}
+                        <LuLayoutDashboard className="text-lg transition-transform duration-300 group-hover:scale-110" />
+                        <span className="font-medium">Dashboard</span>
+
+                        {/* Subtle Indicator (Optional) */}
+                        <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#fb7b53] opacity-0 group-hover:opacity-100 transition-opacity"></span>
                       </Link>
                     </li>
 

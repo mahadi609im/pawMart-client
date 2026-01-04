@@ -28,7 +28,11 @@ const Footer = () => {
       link: 'https://www.linkedin.com/in/mahadi609im/',
       name: 'LinkedIn',
     },
-    { icon: <FaGithub />, link: 'https://github.com/your-id', name: 'Github' },
+    {
+      icon: <FaGithub />,
+      link: 'https://github.com/mahadi609im',
+      name: 'Github',
+    },
     {
       icon: <FaUserTie />,
       link: 'https://mahaportfolio-609im.netlify.app/',
