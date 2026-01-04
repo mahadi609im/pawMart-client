@@ -65,7 +65,7 @@ const ListingsDetails = () => {
         </Link>
       </div>
 
-      <div className="bg-white dark:bg-transparent rounded-2xl shadow-lg max-w-5xl w-full flex flex-col lg:flex-row overflow-hidden border border-dashed border-[#fb7b53]">
+      <div className="bg-white dark:bg-transparent rounded-2xl shadow-lg max-w-5xl w-full flex flex-col lg:flex-row overflow-hidden border border-dashed border-[#fb7b53] justify-center items-center">
         {/* Left Image Section - Modern UI Update */}
         <div className="lg:w-1/2 w-full p-4 md:p-8 bg-[#fb7a5320]">
           <div className="relative h-full min-h-[350px] md:min-h-[450px] overflow-hidden rounded-[2rem] shadow-2xl group">

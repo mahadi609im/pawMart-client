@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div>
       <title>Home | pawMart</title>
-      <div className="mb-20">
+      <div className="mt-10 mb-20">
         <Banner></Banner>
       </div>
       <section className="my-20">
