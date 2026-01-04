@@ -18,7 +18,7 @@ function Banner() {
   const nextRef = useRef(null);
 
   return (
-    <div className="relative flex flex-col justify-center items-center w-full h-9/12">
+    <div className="relative flex flex-col justify-center items-center w-full conCls ">
       <Swiper
         style={{
           '--swiper-navigation-color': '#fb7b53',
@@ -26,7 +26,6 @@ function Banner() {
         }}
         speed={600}
         parallax={true}
-        pagination={{ clickable: true }}
         navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
         onBeforeInit={swiper => {
           swiper.params.navigation.prevEl = prevRef.current;
@@ -37,7 +36,7 @@ function Banner() {
         className="mySwiper w-full h-auto"
       >
         {/* Slide 1 */}
-        <SwiperSlide className="h-auto mb-6">
+        <SwiperSlide className="h-auto">
           <div className="flex flex-col md:flex-row h-full">
             <div className="w-full md:w-1/2 h-auto bg-[#fef0d7]">
               <img
