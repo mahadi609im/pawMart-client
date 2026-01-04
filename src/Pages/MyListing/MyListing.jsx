@@ -101,8 +101,8 @@ const MyListing = () => {
   };
 
   return (
-    <div className="">
-      <title>My Listings | pawMart</title>;{/* Table Section */}
+    <div>
+      <title>My Listings | pawMart</title>
       <div className="conCls pt-20">
         <div className="flex flex-col mb-8 space-y-2">
           <div className="flex">
