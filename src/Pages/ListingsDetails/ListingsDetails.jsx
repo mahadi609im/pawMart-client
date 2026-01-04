@@ -230,13 +230,23 @@ const ListingsDetails = () => {
                 />
               </div>
 
-              <input
-                type="text"
-                name="listingName"
-                defaultValue={name}
-                readOnly
-                className="rounded-xl p-3 bg-slate-100 dark:bg-slate-800/50 text-[#fb7b53] border border-transparent text-sm font-black outline-none cursor-not-allowed"
-              />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  name="listingName"
+                  defaultValue={`${name}`}
+                  readOnly
+                  className="rounded-xl p-3 bg-slate-100 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 border border-transparent text-sm font-black outline-none cursor-not-allowed"
+                />
+
+                <input
+                  type="text"
+                  name="listingName"
+                  defaultValue={`$ ${price} `}
+                  readOnly
+                  className="rounded-xl p-3 bg-slate-100 dark:bg-slate-800/50 text-[#fb7b53] border border-transparent text-sm font-black outline-none cursor-not-allowed"
+                />
+              </div>
 
               {/* Interactive Inputs */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

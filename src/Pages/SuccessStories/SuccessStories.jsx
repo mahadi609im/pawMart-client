@@ -133,7 +133,6 @@ const SuccessStories = () => {
                 </div>
 
                 <div className="relative">
-                  <FaQuoteLeft className="absolute -top-2 -left-2 text-slate-200 dark:text-slate-800 text-4xl -z-0" />
                   <p className="relative z-10 text-slate-600 dark:text-slate-400 italic leading-relaxed">
                     "{item.story}"
                   </p>

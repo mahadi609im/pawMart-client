@@ -1,17 +1,13 @@
 import React from 'react';
 import { FaMapMarkerAlt, FaChevronRight } from 'react-icons/fa';
 import { FiArrowUpRight } from 'react-icons/fi';
-import { useNavigate } from 'react-router';
+import { Link } from 'react-router';
 
 const ListingCard = ({ item }) => {
-  const navigate = useNavigate();
   const isFree = item.price === 0 || item.price === '' || item.price === 'Free';
 
   return (
-    <div
-      onClick={() => navigate(`/listingsDetails/${item._id}`)}
-      className="group bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl overflow-hidden transition-all duration-300 hover:border-[#fb7b53]/40 cursor-pointer"
-    >
+    <div className="group bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl overflow-hidden transition-all duration-300 hover:border-[#fb7b53]/40 ">
       {/* 1. Image Section - Clean & Fixed Height */}
       <div className="relative h-64 overflow-hidden bg-slate-100 dark:bg-slate-800">
         <img
@@ -54,9 +50,12 @@ const ListingCard = ({ item }) => {
           </div>
 
           {/* Minimalist Circular Button */}
-          <div className="relative w-12 h-12 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 transition-all duration-500 group-hover:bg-[#fb7b53] group-hover:text-white group-hover:rotate-45">
+          <Link
+            to={`/listingsDetails/${item._id}`}
+            className="relative w-12 h-12 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 transition-all duration-500 group-hover:bg-[#fb7b53] group-hover:text-white group-hover:rotate-45 cursor-pointer"
+          >
             <FiArrowUpRight size={22} />
-          </div>
+          </Link>
         </div>
       </div>
     </div>

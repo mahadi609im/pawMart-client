@@ -93,15 +93,6 @@ const BlogsSection = () => {
                   <p className="text-gray-600 dark:text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">
                     {blog.excerpt}
                   </p>
-
-                  <div className="mt-auto">
-                    <button className="group/btn flex items-center gap-2 text-sm font-black text-[#fb7b53] uppercase tracking-wider">
-                      Read Full Story
-                      <div className="bg-[#fb7a5321] p-2 rounded-full group-hover/btn:bg-[#fb7b53] group-hover/btn:text-white transition-all duration-300">
-                        <FaArrowRight className="transform group-hover/btn:translate-x-1 transition-transform" />
-                      </div>
-                    </button>
-                  </div>
                 </div>
               </div>
             ))}
