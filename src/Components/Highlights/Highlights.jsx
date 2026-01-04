@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaSmileBeam, FaDog, FaUserShield, FaAward } from 'react-icons/fa';
 import paw2 from '../../assets/paw2.png';
+import { Link } from 'react-router';
 
 const highlights = [
   {
@@ -68,12 +69,12 @@ const Highlights = () => {
               built within the community.
             </p>
 
-            <button
-              to="/pets"
+            <Link
+              to="/story"
               className="mt-6 px-6 py-3 bg-[#fb7b53] text-white font-semibold rounded-lg shadow-lg hover:bg-[#e06b40] transition"
             >
               Read success stories
-            </button>
+            </Link>
           </div>
 
           {/* Right Side: Highlight Cards */}

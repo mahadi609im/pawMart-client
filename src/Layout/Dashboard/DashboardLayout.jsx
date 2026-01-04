@@ -106,7 +106,7 @@ const DashboardLayout = () => {
               <HiMenuAlt2 size={24} />
             </button>
             <h2 className="text-sm font-black uppercase tracking-widest text-slate-400 hidden md:block border-l-2 border-[#fb7b53]/20 pl-4">
-              Control Panel
+              Dashboard
             </h2>
           </div>
 

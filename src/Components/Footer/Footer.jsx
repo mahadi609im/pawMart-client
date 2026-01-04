@@ -43,75 +43,112 @@ const Footer = () => {
   return (
     <footer className="relative bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-300 transition-colors duration-500 overflow-hidden">
       {/* 1. Newsletter Section */}
-      <div className="relative z-10 pt-20">
+      <div className="relative z-10 pt-24 pb-12">
         <div className="container mx-auto px-4">
-          <div className="relative overflow-hidden bg-gradient-to-br from-[#fb7b53] to-[#ff9d7d] rounded-[3rem] p-8 md:p-16 shadow-2xl shadow-orange-200 dark:shadow-none">
-            {/* Animated BG Decor */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 animate-pulse"></div>
-            <div className="absolute bottom-0 left-0 w-40 h-40 bg-black/5 rounded-full -ml-10 -mb-10 animate-pulse transition-all"></div>
+          <div className="relative overflow-hidden bg-[#fb7a53] dark:bg-slate-900 rounded-[3rem] p-10 md:p-20 transition-all duration-500 shadow-xl shadow-[#fb7b53]/10">
+            {/* 🔹 Background Minimalist Decor */}
+            <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 dark:bg-[#fb7b53]/5 rounded-full -mr-24 -mt-24 blur-3xl"></div>
+            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-black/5 dark:bg-white/5 rounded-full blur-2xl"></div>
 
-            <div className="relative z-10 grid lg:grid-cols-2 items-center gap-10">
-              <div className="text-white space-y-4">
-                {/* Stay Connected Label */}
-                <div className="relative inline-block group">
-                  <h3 className="relative z-10 px-6 py-2 rounded-full text-xs md:text-sm font-black uppercase tracking-[0.2em] transition-all duration-500 bg-white/50 text-[#fb7b53] dark:bg-slate-900/80 backdrop-blur-xl group-hover:bg-[#fb7b53] group-hover:text-white">
-                    Stay Connected
-                    <div className="absolute -top-2 -right-2 bg-white dark:bg-slate-800 p-1.5 rounded-full shadow-md transition-transform duration-500 group-hover:rotate-[360deg]">
-                      <img
-                        className="w-4 h-4 object-contain"
-                        src={paw2}
-                        alt="paw"
-                      />
-                    </div>
-                  </h3>
+            <div className="relative z-10 grid lg:grid-cols-5 items-center gap-12">
+              {/* 📝 Text Side (Span 3 Columns) */}
+              <div className="lg:col-span-3 space-y-8">
+                <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900/10 dark:bg-white/5 border border-white/20">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                  </span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/90 dark:text-[#fb7b53]">
+                    Community Network
+                  </span>
                 </div>
 
-                <h2 className="text-4xl md:text-5xl font-black leading-tight">
-                  Join Our Pet <br />{' '}
-                  <span className="text-slate-900">Revolution</span>
-                </h2>
-                <p className="text-white/80 font-medium max-w-sm text-sm">
-                  Subscribe to get exclusive adoption alerts, pet care tips, and
-                  premium shop discounts.
-                </p>
+                <div className="space-y-4">
+                  <div className="space-y-4">
+                    {/* 🔹 Main Heading */}
+                    <h2 className="text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tight">
+                      Master the Art of <br />
+                      <span className="text-slate-900 dark:text-white/50">
+                        Pet Parenting.
+                      </span>
+                    </h2>
+                  </div>
+                  <p className="text-white/80 dark:text-slate-400 font-medium max-w-lg text-base md:text-lg leading-relaxed">
+                    Join 5,000+ owners receiving weekly insights on pet health,
+                    behavior, and exclusive adoption opportunities.
+                  </p>
+                </div>
               </div>
 
-              {/* Modern Input Form */}
-              <div className="relative group w-full max-w-md">
+              {/* ✉️ Form Side (Span 2 Columns) */}
+              <div className="lg:col-span-2 w-full">
                 <form
-                  className="relative"
                   onSubmit={e => {
                     e.preventDefault();
-                    alert('Subscribed!');
+                    alert('Welcome to the inner circle! 🐾');
                   }}
+                  className="relative space-y-4"
                 >
-                  <div className="relative flex items-center">
-                    <input
-                      type="email"
-                      required
-                      placeholder="Enter your email address..."
-                      className="w-full bg-white/10 backdrop-blur-xl border-2 border-white/20 text-white placeholder:text-white/40 px-7 py-5 rounded-full outline-none focus:bg-white/20 transition-all pr-16 font-medium"
-                    />
-                    <button
-                      type="submit"
-                      className="absolute right-2 w-12 h-12 bg-white text-[#fb7b53] rounded-full shadow-lg hover:bg-slate-900 hover:text-white transition-all duration-500 flex items-center justify-center overflow-hidden group/btn"
-                    >
-                      <div className="relative w-5 h-5 flex items-center justify-center">
-                        <FaArrowRight className="absolute transition-all duration-500 transform group-hover/btn:translate-x-10 group-hover/btn:opacity-0" />
-                        <FaArrowRight className="absolute transition-all duration-500 transform -translate-x-10 opacity-0 group-hover/btn:translate-x-0 group-hover/btn:opacity-100" />
+                  {/* 🔹 Modern Hybrid Input Group */}
+                  <div className="relative p-2 rounded-[2rem] bg-white dark:bg-slate-800 shadow-2xl shadow-black/10 dark:shadow-none border border-transparent focus-within:border-white/40 dark:focus-within:border-[#fb7b53]/40 transition-all duration-500">
+                    <div className="flex flex-col sm:flex-row items-center gap-2">
+                      <div className="flex-1 w-full px-4">
+                        <input
+                          type="email"
+                          required
+                          placeholder="Enter your email"
+                          className="w-full bg-transparent py-4 text-slate-900 dark:text-white placeholder:text-slate-400 outline-none font-bold text-base"
+                        />
                       </div>
-                    </button>
+
+                      <button
+                        type="submit"
+                        className="w-full sm:w-auto whitespace-nowrap bg-[#fb7b53] dark:bg-[#fb7b53] text-white px-8 py-4 rounded-[1.5rem] font-black uppercase tracking-wider text-xs hover:bg-slate-900 dark:hover:bg-white dark:hover:text-[#fb7b53] transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                      >
+                        <span>Join Now</span>
+                        <FaArrowRight className="text-[10px] transition-transform duration-300 group-hover/btn:translate-x-1" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* 🔹 Trust Indicators */}
+                  <div className="flex flex-col sm:flex-row items-center justify-between px-6 gap-3">
+                    <div className="flex items-center gap-2">
+                      <div className="flex -space-x-2">
+                        {[1, 2, 3].map(i => (
+                          <div
+                            key={i}
+                            className="w-6 h-6 rounded-full border-2 border-[#fb7b53] dark:border-slate-900 bg-slate-200 overflow-hidden"
+                          >
+                            <img
+                              src={`https://i.pravatar.cc/100?img=${i + 20}`}
+                              alt="user"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      <p className="text-[10px] font-black text-white dark:text-slate-400 uppercase tracking-widest">
+                        +2.4k Members
+                      </p>
+                    </div>
+
+                    <p className="text-[10px] font-bold text-white/70 dark:text-slate-500 uppercase flex items-center gap-1">
+                      <span className="w-1 h-1 bg-white/50 dark:bg-slate-700 rounded-full"></span>
+                      Zero Spam Policy
+                    </p>
                   </div>
                 </form>
-                <div className="mt-4 flex justify-between px-4">
-                  <p className="text-[10px] text-white/40 uppercase font-bold tracking-widest">
-                    Press Enter to join
-                  </p>
-                  <p className="text-[10px] text-white/60 font-medium italic">
-                    No spam, only love.
-                  </p>
-                </div>
               </div>
+            </div>
+
+            {/* 🐾 Subtle Watermark */}
+            <div className="absolute bottom-6 right-10 flex items-center gap-2 opacity-10 dark:opacity-5 select-none pointer-events-none">
+              <img
+                src={paw2}
+                className="w-12 h-12 invert dark:invert-0"
+                alt=""
+              />
             </div>
           </div>
         </div>

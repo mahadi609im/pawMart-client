@@ -17,6 +17,7 @@ import ProfilePage from '../Pages/Profile/Profile';
 import Blogs from '../Pages/Blogs/Blogs';
 import DashboardLayout from '../Layout/Dashboard/DashboardLayout';
 import DashboardHome from '../Pages/DashboardHome/DashboardHome';
+import SuccessStories from '../Pages/SuccessStories/SuccessStories';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/blogs',
         element: <Blogs></Blogs>,
+      },
+      {
+        path: '/story',
+        element: <SuccessStories></SuccessStories>,
       },
       {
         path: '/contact',

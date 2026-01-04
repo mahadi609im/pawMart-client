@@ -146,45 +146,33 @@ const PetSupplies = () => {
             </div>
 
             {/* 3. Price Range Filter */}
-            <div className="bg-slate-50/50 dark:bg-slate-800/50 rounded-[1.8rem] px-8 py-3 flex flex-col justify-center border border-transparent focus-within:border-[#fb7b5320] transition-all">
-              <div className="flex justify-between items-center mb-1">
-                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+            <div className="space-y-2">
+              <div className="flex justify-between items-center ml-2">
+                <label className="text-xs font-black uppercase tracking-widest text-slate-400">
                   Budget Range
                 </label>
-
-                {/* 🔹 Price Display Logic */}
-                <div className="flex items-center gap-1">
-                  {priceRange == 0 ? (
-                    <span className="text-xs font-black text-green-500 bg-green-50 dark:bg-green-500/10 px-2 py-0.5 rounded-md animate-pulse">
-                      💝 Free Adoption
-                    </span>
-                  ) : (
-                    <span className="text-sm font-black text-slate-900 dark:text-white">
-                      Up to{' '}
-                      <span className="text-[#fb7b53]">${priceRange}</span>
-                    </span>
-                  )}
-                </div>
+                {/* 🔹 Dynamic Price Display */}
+                {priceRange == 0 ? (
+                  <span className="text-[10px] font-black text-green-500 bg-green-50 dark:bg-green-500/10 px-2 py-0.5 rounded-lg uppercase">
+                    Free
+                  </span>
+                ) : (
+                  <span className="text-xs font-black text-slate-900 dark:text-white">
+                    <span className="text-[#fb7b53]">${priceRange}</span>
+                  </span>
+                )}
               </div>
 
-              <input
-                type="range"
-                min="0"
-                max="10000"
-                step="100"
-                value={priceRange}
-                onChange={e => setPriceRange(e.target.value)}
-                className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-[#fb7b53] transition-all"
-              />
-
-              {/* 🔹 Subtitle for clarity */}
-              <div className="flex justify-between mt-1">
-                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">
-                  Free
-                </span>
-                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">
-                  $10k+
-                </span>
+              <div className="w-full bg-slate-50 dark:bg-slate-800 rounded-2xl px-5 py-[18px] flex items-center shadow-sm border border-transparent hover:border-[#fb7b5310] transition-all">
+                <input
+                  type="range"
+                  min="0"
+                  max="10000"
+                  step="100"
+                  value={priceRange}
+                  onChange={e => setPriceRange(e.target.value)}
+                  className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-[#fb7b53] transition-all"
+                />
               </div>
             </div>
 
@@ -195,7 +183,7 @@ const PetSupplies = () => {
               </label>
               <select
                 onChange={e => setSortOption(e.target.value)}
-                className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl px-5 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-[#fb7b53] outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl px-5 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-[#fb7b53] outline-none transition-all"
               >
                 <option value="newest">Newest Arrivals</option>
                 <option value="lowToHigh">Price: Low to High</option>

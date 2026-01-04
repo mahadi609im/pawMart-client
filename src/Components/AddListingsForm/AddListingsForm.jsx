@@ -104,7 +104,7 @@ const AddListingsForm = () => {
               />
             </div>
             <h2 className="text-3xl lg:text-4xl font-black text-slate-800 dark:text-white mt-4 leading-tight">
-              List Your <span className="text-[#fb7b53]">Pet</span> or Products
+              Add Your <span className="text-[#fb7b53]">Pet</span> or Products
             </h2>
             <p className="text-slate-500 dark:text-slate-400 mt-4 text-sm leading-relaxed">
               Fill in the details to showcase your pets or products to thousands

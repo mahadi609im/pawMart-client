@@ -54,7 +54,7 @@ const Blogs = () => {
               </h3>
             </div>
             <h2 className="titleFont text-slate-950 dark:text-slate-100 text-3xl md:text-5xl font-bold">
-              Latest <span className="text-[#fb7b53]">Insights</span> & Stories
+              Latest Insights & Stories
             </h2>
             <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm md:text-base max-w-md font-medium">
               Everything you need to know about your pet's health, happiness,

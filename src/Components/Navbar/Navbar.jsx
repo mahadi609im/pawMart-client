@@ -55,6 +55,11 @@ const Navbar = () => {
       tooltip: 'Read our All blogs',
     },
     {
+      name: 'Story',
+      path: '/story',
+      tooltip: 'Listen our success stories',
+    },
+    {
       name: 'Contact Us',
       path: '/contact',
       tooltip: 'Send us a message',
