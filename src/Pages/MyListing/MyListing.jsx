@@ -19,7 +19,10 @@ const MyListing = () => {
         `https://paw-mart-server-smoky.vercel.app/listings?email=${user.email}`
       )
         .then(res => res.json())
-        .then(data => setMyListings(data));
+        .then(data => {
+        console.log("API Data:", data); // এই লাইনটি যোগ করুন
+        setMyListings(data);
+      });
     }
   }, [user]);
 
